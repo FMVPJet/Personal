@@ -32,7 +32,11 @@ const App = () => (
         alt="Jet Kwok"
         src={Me}
       />
+    </div>
 
+
+    <div className="my-6 space-y-1">
+      <a id="emailButton"></a>
     </div>
 
     <div className="flex items-center align-middle space-x-2">
