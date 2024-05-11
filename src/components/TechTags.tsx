@@ -73,7 +73,7 @@ const tech = [
 ];
 
 const TechTagsMarquee = () => (
-  <Marquee pauseOnHover speed={25} gradientColor={[17, 24, 39]}>
+  <Marquee pauseOnHover speed={25}>
     <div className="flex flex-wrap">
       {tech.map((tech) => (
         <div className="text-xs mr-2 inline-flex items-center font-semibold tracking-wider uppercase px-3 py-1 rounded-full bg-gray-800 border border-gray-700">
