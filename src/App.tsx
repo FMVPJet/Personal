@@ -11,9 +11,14 @@ import {
   GitIcon,
   DockerIcon,
   DVCIcon,
+  CPPIcon,
+  MatlabIcon,
+  MySQLIcon,
+  OpenCVIcon,
+  MarkdownIcon,
+  LinuxIcon,
+  LaTeXIcon
 } from "./components/icons";
-import GitLabIcon from "./components/icons/GitLabIcon";
-import LogoDoxyMe from "./assets/img/doxyme.webp";
 import "tippy.js/dist/tippy.css";
 import Tippy from "@tippyjs/react";
 
@@ -32,13 +37,7 @@ const App = () => (
 
     <div className="flex items-center align-middle space-x-2">
       <h1 className="text-4xl font-bold">Jet Kwok</h1>
-      <Tippy content="Doxy.me">
-        <img
-          src={LogoDoxyMe}
-          alt="Current employer badge"
-          className="w-7 h-7 bg-blue-200 rounded-full hover:ring-1 ring-gray-700 transition-all ease-in-out"
-        />
-      </Tippy>
+
     </div>
     <h2 className="mt-1 text-gray-400">Computer Vision Algorithm Engineer | MLOps</h2>
 
@@ -52,8 +51,7 @@ const App = () => (
     </p>
     <p className="prose prose-invert min-w-full my-5">
       My journey in the world of technology has been marked by a relentless pursuit of knowledge
-      and a commitment to delivering innovative solutions. With expertise in a wide range of
-      technologies, including Python, PyTorch, OpenCV, C++ and MATLAB. I am well-equipped to
+      and a commitment to delivering innovative solutions. I am well-equipped to
       tackle complex projects and create seamless, user-centric experiences.
       Whether it&apos;s algorithm optimization and design, model deployment,
       project operation and maintenance, I thrive on turning challenges into opportunities for
@@ -103,9 +101,9 @@ const App = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
       <DevParadigmBox
         title="DL & ML"
-        desc="Firstly, ability to process source data into usable data and manage storage.\n\n
-              Secondly, it is possible to conduct model training, parameter tuning, evaluation and selection in the experimental environment to obtain the optimal model.\n\n
-              Finally, have a strong interest in the field of AI and be able to keep track of the latest developments in this field "
+        desc="1. Ability to process source data into usable data and manage storage.\n\n
+              2. It is possible to conduct model training, parameter tuning, evaluation and selection in the experimental environment to obtain the optimal model.\n\n
+              3. Have a strong interest in the field of AI and be able to keep track of the latest developments in this field "
         techTags={[
           {
             text: "Python",
@@ -115,15 +113,30 @@ const App = () => (
             text: "PyTorch",
             icon: <PytorchIcon />,
           },
+          {
+            text: "Matlab",
+            icon: <MatlabIcon />,
+          },
+          {
+            text: "OpenCV",
+            icon: <OpenCVIcon />,
+          },
+          {
+            text: "MySQL",
+            icon: <MySQLIcon />,
+          },
         ]}
       />
       <DevParadigmBox
         title="Ops"
-        desc="Firstly, be able to conduct feasibility analysis and prepare technical requirements and technical plans based on commercial goals and business needs.\n\n
-        Secondly, it can encapsulate the model and configuration, code and scripts, generate deliverables, and deploy them to the target environment.\n\n
-        Finally, monitoring and operation and maintenance capabilities can be provided for online model services in the production environment.
-        "
+        desc="1. Be able to conduct feasibility analysis and prepare technical requirements and technical plans based on commercial goals and business needs.\n\n
+              2. It can encapsulate the model and configuration, code and scripts, generate deliverables, and deploy them to the target environment.\n\n
+              3. Monitoring and operation and maintenance capabilities can be provided for online model services in the production environment."
         techTags={[
+          {
+            text: "Linux",
+            icon: <LinuxIcon />,
+          },
           {
             text: "Git",
             icon: <GitIcon />,

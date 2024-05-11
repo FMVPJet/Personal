@@ -1,23 +1,20 @@
 import { Calendar } from "phosphor-react";
-import LogoGloscol from "../assets/img/gloscol.webp";
-import LogoLancaster from "../assets/img/lancaster.webp";
-import LogoRoehampton from "../assets/img/roehampton.webp";
+import LogoGDUT from "../assets/img/GDUT.png";
+import Logohhstu from "../assets/img/hhstu.png";
 
 const Education = () => {
   const positions = [
     {
-      logo: LogoLancaster,
+      logo: LogoGDUT,
       title: "Guangdong University of Technology - Guangzhou, CHN",
       description:
-        "Studied for the Bachelor's Degree while at an Apprenticeship with Vodafone Group. Graduated with a 1st Class Bachelor's Degree in July 2023. The course covered topics such as Project Management, Corporate Strategies, Cyber Security & Ethics, Networking and more.",
+        "Guangdong Key Laboratory of Intellectual Property and Big Data, supervised by Prof. Qingyun Dai",
       role: "M.Eng. in Electronic and Communication Engineering",
       date: "September 2019 - July 2022",
     },
     {
-      logo: LogoRoehampton,
+      logo: Logohhstu,
       title: "Huanghe S & T University - Zhengzhou, CHN",
-      description:
-        "Successfully completed the initial year of my Software Engineering Bachelor's degree at Roehampton University (delivered by QA) before transferring to Lancaster University.",
       role: "B.Eng. in Electronic and Communication Engineering",
       date: "September 2015 - July 2019",
     },
@@ -28,7 +25,7 @@ const Education = () => {
       <ol className="relative border-l dark:border-gray-800">
         {positions.map((p, i) => (
           <li key={i} className="p-1 mb-10 ml-6">
-            <span className="flex absolute -left-3.5 justify-center items-center w-7 h-7 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+            <span className="flex absolute -left-3.5 justify-center items-center w-7 h-7 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-gray-200">
               <img
                 src={p.logo}
                 alt={p.title}

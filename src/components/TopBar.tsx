@@ -1,4 +1,4 @@
-import { LinkedinLogo } from "phosphor-react";
+import { EnvelopeSimple } from "phosphor-react";
 import { useEffect } from "react";
 import Me from "../assets/img/me.webp";
 
@@ -40,12 +40,11 @@ const TopBar = () => {
             </div>
           </div>
           <a
-            href="https://www.linkedin.com/in/guojiangtao/"
-            target="_blank"
+            href="mailto:JetKwok827@gmail.com"
             className="bg-[#005E93] hover:bg-[#0077B5] select-none transition cursor-pointer px-4 py-2 rounded inline-flex items-center space-x-2"
           >
-            <LinkedinLogo weight="bold" size={20} />
-            <span className="text-sm">Connect</span>
+            <EnvelopeSimple weight="bold" size={20} />
+            <span className="text-sm">Mail</span>
           </a>
         </div>
       </div>

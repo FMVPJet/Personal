@@ -1,55 +1,59 @@
 import { BriefcaseMetal, Calendar } from "phosphor-react";
-import LogoVodafone from "../assets/img/vf.webp";
-import LogoAlmighty from "../assets/img/almighty.webp";
-import LogoCreatorSites from "../assets/img/creatorsites.webp";
-import LogoIllumiMedia from "../assets/img/illumi.webp";
-import LogoRetroPlan from "../assets/img/retroplan.webp";
-import LogoDoxyMe from "../assets/img/doxyme.webp";
+import Logocasivision from "../assets/img/casivision.png";
+import Logozxiat from "../assets/img/zxiat.jpg";
+import Logoiflytek from "../assets/img/iflytek.png";
 
 const Positions = () => {
   const positions = [
     {
-      logo: LogoDoxyMe,
+      logo: Logoiflytek,
       title: "iFLYTEK - Zhengzhou, CHN",
-      // link: "https://doxy.me",
-      description:
-        "R&D Department, Computer Vision Algorithm Engineer",
-      tech: ["Nest.js", "Next.js", "Agile", "TypeScript", "React"],
       role: "R&D Department, Computer Vision Algorithm Engineer",
+      description:
+        "Focus: Image Segmentation, Object Detection",
+      link: "https://www.iflytek.com/",
+      tech: [
+        "C++",
+        "Python",
+        "PyTorch",
+        "OpenCV",
+        "MySQL",
+        "gRPC",
+        "Docker",
+        "MinIO",
+        "Git",
+      ],
       date: "November 2023 - Present",
     },
 
     {
-      logo: LogoRetroPlan,
+      logo: Logozxiat,
       title: "Zhengzhou Xinda Institute of Advanded Technology - Zhengzhou, CHN",
-      // link: "https://retroplan.io",
-      description:
-        "Real-time Planning Poker and Retrospective tools for Agile teams.",
-      tech: [
-        "Firebase",
-        "Realtime Firestore",
-        "Next.js",
-        "Google Cloud Functions",
-      ],
       role: "Technology R&D Department, Algorithm Engineer",
+      description:
+        "Focus: Object Detection, Image Segmentation, and Multi-modal Fusion",
+      tech: [
+        "C++",
+        "Python",
+        "PyTorch",
+        "Matlab",
+      ],
       date: "March 2023 - November 2023",
     },
     {
-      logo: LogoCreatorSites,
+      logo: Logocasivision,
       title: "CASIVISION TECH LUOYANG CO LTD - Luoyang, CHN",
-      // link: "https://creatorsites.net",
-      description:
-        "Enabling content creators to display their content in the best way possible.",
-      tech: [
-        "Vite",
-        "React",
-        "Node",
-        "Express",
-        "MongoDB",
-        "CloudFlare Pages",
-        "Digital Ocean & AWS",
-      ],
       role: "Algorithm Research Institute, Algorithm Engineer",
+      description:
+        "Focus: Visual Algorithms for Industrial Defect Detection Project",
+      link: "https://www.casivision.com/",
+      tech: [
+        "C++",
+        "Python",
+        "PyTorch",
+        "OpenCV",
+        "Halcon"
+      ],
       date: "July 2022 - March 2023",
     },
   ];
@@ -77,13 +81,13 @@ const Positions = () => {
                 {p.description}
               </pre>
 
-              {/* <a
+              <a
                 href={p.link}
                 className="text-blue-300 underline break-all"
                 target="_blank"
               >
                 {p.link}
-              </a> */}
+              </a>
 
               <div className="mt-4 flex flex-wrap">
                 {p.tech.map((tech) => (

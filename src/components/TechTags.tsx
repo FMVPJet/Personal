@@ -7,6 +7,14 @@ import {
   GitIcon,
   DockerIcon,
   DVCIcon,
+  CPPIcon,
+  MatlabIcon,
+  MySQLIcon,
+  OpenCVIcon,
+  MarkdownIcon,
+  LinuxIcon,
+  LaTeXIcon,
+  MinIOIcon
 } from "./icons";
 
 const tech = [
@@ -15,8 +23,36 @@ const tech = [
     icon: <PythonIcon />,
   },
   {
+    text: "C++",
+    icon: <CPPIcon />,
+  },
+  {
+    text: "Markdown",
+    icon: <MarkdownIcon />,
+  },
+  {
+    text: "LaTeX",
+    icon: <LaTeXIcon />,
+  },
+  {
+    text: "Matlab",
+    icon: <MatlabIcon />,
+  },
+  {
+    text: "MySQL",
+    icon: <MySQLIcon />,
+  },
+  {
     text: "Pytorch",
     icon: <PytorchIcon />,
+  },
+  {
+    text: "OpenCV",
+    icon: <OpenCVIcon />,
+  },
+  {
+    text: "Linux",
+    icon: <LinuxIcon />,
   },
   {
     text: "Git",
@@ -29,6 +65,10 @@ const tech = [
   {
     text: "DVC",
     icon: <DVCIcon />,
+  },
+  {
+    text: "MinIO",
+    icon: <MinIOIcon />,
   },
 ];
 
