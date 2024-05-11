@@ -11,7 +11,7 @@ const Positions = () => {
       role: "R&D Department, Computer Vision Algorithm Engineer",
       description:
         "Focus: Image Segmentation, Object Detection",
-      link: "https://www.iflytek.com/",
+      link: "https://www.iflytek.com",
       tech: [
         "C++",
         "Python",
@@ -46,7 +46,7 @@ const Positions = () => {
       role: "Algorithm Research Institute, Algorithm Engineer",
       description:
         "Focus: Visual Algorithms for Industrial Defect Detection Project",
-      link: "https://www.casivision.com/",
+      link: "https://www.casivision.com",
       tech: [
         "C++",
         "Python",

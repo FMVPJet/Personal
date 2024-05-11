@@ -46,7 +46,7 @@ const App = () => (
     <h2 className="mt-1 text-gray-400">Computer Vision Algorithm Engineer | MLOps</h2>
 
     <p className="prose prose-invert min-w-full my-5">
-      Hi!👋 I'm Jet Kwok from China,
+      Hi!👋 I'm Jet Kwok from China.
     </p>
     <p className="prose prose-invert min-w-full my-5">
       I am an engineer with a strong background in AI and ML.
@@ -105,9 +105,9 @@ const App = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
       <DevParadigmBox
         title="DL & ML"
-        desc="1. Ability to process source data into usable data and manage storage.\n\n
-              2. It is possible to conduct model training, parameter tuning, evaluation and selection in the experimental environment to obtain the optimal model.\n\n
-              3. Have a strong interest in the field of AI and be able to keep track of the latest developments in this field "
+        desc="1. Process raw data into usable data and manage storage.\n\n
+              2. Train models, adjust parameters, evaluate, and select the best ones in the experimental environment.\n\n
+              3. Have a strong interest in the field of Artificial Intelligence and am able to track the latest development trends in this field."
         techTags={[
           {
             text: "Python",
@@ -133,9 +133,9 @@ const App = () => (
       />
       <DevParadigmBox
         title="Ops"
-        desc="1. Be able to conduct feasibility analysis and prepare technical requirements and technical plans based on commercial goals and business needs.\n\n
-              2. It can encapsulate the model and configuration, code and scripts, generate deliverables, and deploy them to the target environment.\n\n
-              3. Monitoring and operation and maintenance capabilities can be provided for online model services in the production environment."
+        desc="1. Conduct feasibility analysis based on business objectives and requirements, and prepare technical requirements and plans. \n\n
+              2. Encapsulate models and configurations, code and scripts, generate deliverables, and deploy them to the target environment. \n\n
+              3. Provide monitoring and operation and maintenance capabilities for online model services in the production environment to ensure their stability and reliability."
         techTags={[
           {
             text: "Linux",
@@ -166,7 +166,8 @@ const App = () => (
 
     <h3 className="mb-8 text-xl font-semibold">Education</h3>
     <Education />
-  </Container>
+    </Container>
+
 );
 
 export default App;
