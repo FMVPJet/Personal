@@ -108,11 +108,18 @@ export default function Band({
   const markerRef = useRef<HTMLDivElement>(null);
   const size = useThree((state) => state.size);
 
-  const vec = new THREE.Vector3();
-  const ang = new THREE.Vector3();
-  const rot = new THREE.Vector3();
-  const dir = new THREE.Vector3();
+  const tmp = useMemo(
+    () => ({
+      vec: new THREE.Vector3(),
+      ang: new THREE.Vector3(),
+      rot: new THREE.Vector3(),
+      dir: new THREE.Vector3(),
+    }),
+    []
+  );
   const transitionProgress = useRef(0);
+  const j1Lerped = useRef(new THREE.Vector3());
+  const j2Lerped = useRef(new THREE.Vector3());
 
   const [dragged, drag] = useState<THREE.Vector3 | false>(false);
   const [hovered, hover] = useState(false);
@@ -241,47 +248,35 @@ export default function Band({
     }
 
     if (dragged && allowDrag) {
-      vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
-      dir.copy(vec).sub(state.camera.position).normalize();
-      vec.add(dir.multiplyScalar(state.camera.position.length()));
+      tmp.vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
+      tmp.dir.copy(tmp.vec).sub(state.camera.position).normalize();
+      tmp.vec.add(tmp.dir.multiplyScalar(state.camera.position.length()));
       [card, j1, j2, j3, fixed].forEach((ref) => ref.current?.wakeUp());
       card.current.setNextKinematicTranslation({
-        x: vec.x - dragged.x,
-        y: vec.y - dragged.y,
-        z: vec.z - dragged.z,
+        x: tmp.vec.x - dragged.x,
+        y: tmp.vec.y - dragged.y,
+        z: tmp.vec.z - dragged.z,
       });
     }
 
-    const j1Lerped = new THREE.Vector3().copy(j1.current.translation());
-    const j1ClampedDistance = Math.max(
-      0.1,
-      Math.min(1, j1Lerped.distanceTo(j1.current.translation()))
-    );
-    j1Lerped.lerp(
-      j1.current.translation(),
-      delta * (minSpeed + j1ClampedDistance * (maxSpeed - minSpeed))
-    );
+    const j1Pos = j1.current.translation();
+    const j1Dist = Math.max(0.1, Math.min(1, j1Lerped.current.distanceTo(j1Pos)));
+    j1Lerped.current.lerp(j1Pos, delta * (minSpeed + j1Dist * (maxSpeed - minSpeed)));
 
-    const j2Lerped = new THREE.Vector3().copy(j2.current.translation());
-    const j2ClampedDistance = Math.max(
-      0.1,
-      Math.min(1, j2Lerped.distanceTo(j2.current.translation()))
-    );
-    j2Lerped.lerp(
-      j2.current.translation(),
-      delta * (minSpeed + j2ClampedDistance * (maxSpeed - minSpeed))
-    );
+    const j2Pos = j2.current.translation();
+    const j2Dist = Math.max(0.1, Math.min(1, j2Lerped.current.distanceTo(j2Pos)));
+    j2Lerped.current.lerp(j2Pos, delta * (minSpeed + j2Dist * (maxSpeed - minSpeed)));
 
     curve.points[0].copy(j3.current.translation());
-    curve.points[1].copy(j2Lerped);
-    curve.points[2].copy(j1Lerped);
+    curve.points[1].copy(j2Lerped.current);
+    curve.points[2].copy(j1Lerped.current);
     curve.points[3].copy(fixed.current.translation());
     band.current.geometry.setPoints(curve.getPoints(32));
 
-    ang.copy(card.current.angvel());
-    rot.copy(card.current.rotation());
+    tmp.ang.copy(card.current.angvel());
+    tmp.rot.copy(card.current.rotation());
     card.current.setAngvel(
-      { x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z },
+      { x: tmp.ang.x, y: tmp.ang.y - tmp.rot.y * 0.25, z: tmp.ang.z },
       false
     );
 
@@ -368,7 +363,7 @@ export default function Band({
               drag(
                 new THREE.Vector3()
                   .copy(event.point)
-                  .sub(vec.copy(card.current.translation()))
+                  .sub(tmp.vec.copy(card.current.translation()))
               );
             }}
           >

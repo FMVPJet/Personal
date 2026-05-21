@@ -124,6 +124,7 @@ function HomeHero({
                 target="_blank"
                 rel="noreferrer"
                 className="home-hero-button home-hero-button-primary"
+                aria-label="View CV (opens in new tab)"
                 onPointerMove={handleHeroButtonPointerMove}
                 onPointerLeave={handleHeroButtonPointerLeave}
               >
@@ -134,6 +135,7 @@ function HomeHero({
                 target="_blank"
                 rel="noreferrer"
                 className="home-hero-button home-hero-button-secondary"
+                aria-label="View GitHub profile (opens in new tab)"
                 onPointerMove={handleHeroButtonPointerMove}
                 onPointerLeave={handleHeroButtonPointerLeave}
               >
@@ -142,6 +144,7 @@ function HomeHero({
               <a
                 href={`mailto:${profile.email}`}
                 className="home-hero-button home-hero-button-secondary"
+                aria-label="Send email"
                 onPointerMove={handleHeroButtonPointerMove}
                 onPointerLeave={handleHeroButtonPointerLeave}
               >

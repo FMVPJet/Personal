@@ -5,6 +5,16 @@ import "@/styles/globals.css";
 export const metadata: Metadata = {
   title: "Jet Kwok - CV Engineer",
   description: "Computer Vision Engineer · MLOps - Interactive 3D Profile",
+  openGraph: {
+    title: "Jet Kwok - CV Engineer",
+    description: "Computer Vision Engineer · MLOps · Zhengzhou, China",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Jet Kwok - CV Engineer",
+    description: "Computer Vision Engineer · MLOps · Zhengzhou, China",
+  },
 };
 
 export default function RootLayout({

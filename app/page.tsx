@@ -1,19 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Canvas, extend } from "@react-three/fiber";
-import { Environment, Lightformer, useGLTF, useTexture } from "@react-three/drei";
-import { Physics } from "@react-three/rapier";
-import { MeshLineGeometry, MeshLineMaterial } from "meshline";
+import dynamic from "next/dynamic";
 
 import { badgeProfile } from "@/app/badge-profile";
-import Band from "@/components/band";
 import ProfileHome from "@/components/profile-home";
 
-extend({ MeshLineGeometry, MeshLineMaterial });
-useGLTF.preload("/assets/3d/card.glb");
-useTexture.preload("/assets/images/tag_texture.png");
-useTexture.preload("/assets/images/badge_front.png");
+const BadgeCanvas = dynamic(() => import("@/components/badge-canvas"), {
+  ssr: false,
+});
 
 const readStorage = (key: string) => {
   try {
@@ -32,7 +27,7 @@ const writeStorage = (key: string, value: string) => {
 };
 
 export default function PersonalPage() {
-  const [theme, setTheme] = useState<"light" | "dark" | null>("dark");
+  const [theme, setTheme] = useState<"light" | "dark" | null>(null);
   const [hydrated, setHydrated] = useState(false);
   const [cardOpen, setCardOpen] = useState(false);
 
@@ -68,6 +63,7 @@ export default function PersonalPage() {
           type="button"
           disabled={!controlsReady}
           onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
+          aria-label={`Switch to ${nextThemeLabel.toLowerCase()} mode`}
           className={`page-utility-button ${
             resolvedTheme === "dark"
               ? "text-white/52 hover:text-white"
@@ -88,58 +84,7 @@ export default function PersonalPage() {
         />
       </section>
 
-      {cardOpen ? (
-        <div className="fixed inset-0 z-30" aria-hidden={!cardOpen}>
-          <div
-            data-testid="card-overlay-close"
-            className="absolute inset-0 bg-[rgba(255,255,255,0.04)] backdrop-blur-[10px] dark:bg-[rgba(9,13,24,0.1)]"
-          />
-          <div className="pointer-events-none absolute inset-0">
-            <div className="pointer-events-auto relative h-full w-full">
-              <Canvas
-                camera={{ position: [0, 0, 13], fov: 25 }}
-                style={{ backgroundColor: "transparent" }}
-                onPointerMissed={() => setCardOpen(false)}
-              >
-                <ambientLight intensity={Math.PI} />
-                <Physics debug={false} interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-                  <Band viewState="intro" displayMode="fullscreen" />
-                </Physics>
-                <Environment background={false} blur={0.75}>
-                  <Lightformer
-                    intensity={2}
-                    color="white"
-                    position={[0, -1, 5]}
-                    rotation={[0, 0, Math.PI / 3]}
-                    scale={[100, 0.1, 1]}
-                  />
-                  <Lightformer
-                    intensity={3}
-                    color="white"
-                    position={[-1, -1, 1]}
-                    rotation={[0, 0, Math.PI / 3]}
-                    scale={[100, 0.1, 1]}
-                  />
-                  <Lightformer
-                    intensity={3}
-                    color="white"
-                    position={[1, 1, 1]}
-                    rotation={[0, 0, Math.PI / 3]}
-                    scale={[100, 0.1, 1]}
-                  />
-                  <Lightformer
-                    intensity={10}
-                    color="white"
-                    position={[-10, 0, 14]}
-                    rotation={[0, Math.PI / 2, Math.PI / 3]}
-                    scale={[100, 10, 1]}
-                  />
-                </Environment>
-              </Canvas>
-            </div>
-          </div>
-        </div>
-      ) : null}
+      {cardOpen ? <BadgeCanvas onClose={() => setCardOpen(false)} /> : null}
     </div>
   );
 }
