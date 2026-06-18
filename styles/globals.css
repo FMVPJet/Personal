@@ -1,11 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "../hero.ts";
 
-@layer base {
-  :root {
-    --font-oleo: "Oleo Script", cursive;
-  }
+@theme {
+  --color-darkBg: #0f1217;
+  --color-knight: #2a2f35;
+
+  --font-family-oleo: var(--font-oleo);
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* react-grid-layout styles */
@@ -35,9 +40,4 @@
 
 .react-grid-item > .react-resizable-handle {
   display: none;
-}
-
-@keyframes fade {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
 }
