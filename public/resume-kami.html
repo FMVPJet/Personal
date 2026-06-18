@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>郭江涛 · 简历</title>
+<meta name="author" content="郭江涛">
+<meta name="description" content="算法工程师，计算机视觉与多模态信号处理，3 项发明专利第一发明人，SCI Q1（Information Fusion）论文合著。">
+<meta name="keywords" content="算法工程师, 计算机视觉, 深度学习, 多模态, PyTorch">
+<meta name="generator" content="Kami">
+<style>
+  @font-face {
+    font-family: "TsangerJinKai02";
+    src: url("/Users/taotao/.claude/skills/kami/assets/fonts/TsangerJinKai02-W04.ttf") format("truetype"),
+         url("https://cdn.jsdelivr.net/gh/tw93/Kami@main/assets/fonts/TsangerJinKai02-W04.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "TsangerJinKai02";
+    src: url("/Users/taotao/.claude/skills/kami/assets/fonts/TsangerJinKai02-W05.ttf") format("truetype"),
+         url("https://cdn.jsdelivr.net/gh/tw93/Kami@main/assets/fonts/TsangerJinKai02-W05.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @page {
+    size: A4;
+    margin: 11mm 13mm 11mm 13mm;
+    background: #f5f4ed;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --parchment: #f5f4ed;
+    --ivory:     #faf9f5;
+    --border:    #e8e6dc;
+    --border-soft: #e5e3d8;
+    --near-black: #141413;
+    --dark-warm: #3d3d3a;
+    --olive:     #504e49;
+    --stone:     #6b6a64;
+    --brand:     #1B365D;
+    --brand-tint: #EEF2F7;
+    --serif: "TsangerJinKai02", "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", Georgia, serif;
+  }
+
+  html, body { background: var(--parchment); }
+
+  @media screen {
+    body { max-width: 210mm; margin: 0 auto; padding: 11mm 13mm; }
+  }
+
+  body {
+    color: var(--near-black);
+    font-family: var(--serif);
+    font-size: 9.3pt;
+    line-height: 1.45;
+    letter-spacing: 0.3pt;
+    widows: 3;
+    orphans: 3;
+  }
+
+  .serif { font-family: var(--serif); }
+  a { color: var(--brand); text-decoration: none; }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 4.2mm;
+    padding-bottom: 2.3mm;
+    border-bottom: 0.6pt solid var(--border);
+  }
+  .header > div:first-child { flex-shrink: 0; }
+  .name {
+    font-family: var(--serif);
+    font-size: 26.5pt;
+    font-weight: 500;
+    letter-spacing: 0.5pt;
+    color: var(--near-black);
+    line-height: 1;
+    margin-bottom: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 2.2mm;
+    white-space: nowrap;
+  }
+  .tagline { font-size: 9.5pt; color: var(--olive); line-height: 1.3; margin-top: 1.5mm; }
+  .tagline .accent { color: var(--brand); font-weight: 500; }
+
+  .contact {
+    text-align: right;
+    font-size: 9pt;
+    color: var(--stone);
+    line-height: 1.5;
+    margin-bottom: -0.5mm;
+  }
+  .contact a { color: var(--dark-warm); }
+  .contact .loc { color: var(--olive); font-weight: 500; }
+  .contact .role { color: var(--brand); font-size: 10.5pt; font-weight: 500; }
+  .contact .sep { color: var(--border); margin: 0 0.4em; }
+
+  /* METRICS */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 6mm;
+    margin-bottom: 6.5mm;
+  }
+  .metric {
+    padding: 1mm 0 1.2mm;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7mm;
+    break-inside: avoid;
+  }
+  .metric-value {
+    font-family: var(--serif);
+    font-size: 13pt;
+    font-weight: 500;
+    color: var(--brand);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .metric-value .unit { font-size: 10.5pt; margin-left: 0.3mm; font-weight: 500; color: var(--brand); }
+  .metric-label { font-size: 9pt; color: var(--olive); line-height: 1.2; white-space: nowrap; }
+
+  /* SECTION */
+  .section-title {
+    font-family: var(--serif);
+    font-size: 12.5pt;
+    font-weight: 500;
+    color: var(--near-black);
+    border-bottom: 0.5pt solid var(--border);
+    padding: 0 0 1mm 0;
+    margin: 4.5mm 0 1.5mm 0;
+    display: flex;
+    align-items: baseline;
+    gap: 2mm;
+  }
+  .section-title .sub {
+    margin-left: auto;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 9pt;
+    color: var(--stone);
+    letter-spacing: 0.3pt;
+  }
+  section:first-of-type .section-title { margin-top: 0; }
+  .page-break > .section-title { margin-top: 0; }
+  .section-title + .skill-row { padding-top: 1.2mm; }
+  .section-title + .edu-row { padding-top: 1.2mm; }
+
+  /* SUMMARY */
+  .summary { font-size: 9.2pt; line-height: 1.42; color: var(--near-black); }
+  .summary .hl { color: var(--brand); }
+
+  /* TIMELINE */
+  .timeline { display: flex; gap: 6mm; margin-bottom: 5mm; margin-top: 1.5mm; }
+  .tl-step { flex: 1; padding: 2mm 0; break-inside: avoid; }
+  .tl-top { display: flex; align-items: baseline; gap: 1.5mm; margin-bottom: 0.5mm; }
+  .tl-year { font-family: var(--serif); font-size: 11pt; font-weight: 500; color: var(--brand); line-height: 1; }
+  .tl-head { font-size: 11pt; font-weight: 500; color: var(--near-black); }
+  .tl-body { font-size: 9pt; color: var(--olive); line-height: 1.40; letter-spacing: 0.3pt; }
+
+  /* PROJECTS */
+  .project { padding: 2.2mm 0; break-inside: avoid; }
+  .project:first-of-type { padding-top: 1mm; }
+  .proj-head { display: flex; align-items: baseline; gap: 2mm; margin-bottom: 0.75mm; }
+  .proj-name { font-family: var(--serif); font-size: 11pt; font-weight: 500; color: var(--near-black); }
+  .proj-kind { font-size: 11pt; color: var(--olive); }
+  .proj-role {
+    font-size: 9pt; color: var(--brand); font-weight: 500;
+    margin-left: auto; background: #EEF2F7;
+    padding: 0.4mm 1.2mm; border-radius: 2pt; letter-spacing: 0.05pt;
+    white-space: nowrap;
+  }
+  .proj-lines { display: table; width: 100%; }
+  .proj-row { display: table-row; }
+  .proj-label {
+    display: table-cell; width: 11mm;
+    font-size: 9pt; color: var(--brand);
+    font-weight: 500; letter-spacing: 0.2pt;
+    padding: 0.2mm 0 0.4mm 0; vertical-align: top;
+  }
+  .proj-text {
+    display: table-cell; font-size: 9pt;
+    color: var(--near-black); line-height: 1.40; letter-spacing: 0.3pt;
+    padding: 0 0 0.4mm 0.5mm;
+  }
+  .proj-text .hl { color: var(--brand); }
+
+  /* PAGE BREAK */
+  .page-break { break-before: page; }
+
+  /* ACADEMIC OUTPUT */
+  .pub-item {
+    padding: 1.8mm 0;
+    border-bottom: 0.3pt dotted var(--border-soft);
+    break-inside: avoid;
+  }
+  .pub-item:last-of-type { border-bottom: none; }
+  .pub-title { font-size: 9.2pt; color: var(--near-black); line-height: 1.40; letter-spacing: 0.3pt; }
+  .pub-meta { font-size: 9pt; color: var(--stone); margin-top: 0.3mm; }
+  .pub-meta .badge {
+    display: inline-block;
+    background: var(--brand); color: var(--ivory);
+    font-size: 8.5pt; font-weight: 500;
+    padding: 0.1mm 1.2mm; border-radius: 2pt;
+    margin-right: 1.5mm; letter-spacing: 0.2pt;
+    transform: translateY(-0.2mm);
+  }
+  .pub-meta .badge.green { background: #2e6b3e; }
+
+  .patent-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 8mm; }
+  .patent-item {
+    padding: 1.5mm 0;
+    border-bottom: 0.3pt dotted var(--border-soft);
+    break-inside: avoid;
+  }
+  .patent-item:last-child, .patent-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .patent-name { font-size: 9pt; color: var(--near-black); line-height: 1.38; }
+  .patent-meta { font-size: 8.8pt; color: var(--stone); margin-top: 0.2mm; }
+  .patent-meta .status { color: var(--brand); font-weight: 500; }
+
+  /* SKILLS */
+  .skill-row {
+    display: flex; gap: 2.5mm; padding: 1.7mm 0;
+    border-bottom: 0.3pt dotted var(--border);
+    align-items: baseline;
+  }
+  .skill-row:last-of-type { border-bottom: none; }
+  .skill-label {
+    font-size: 9pt; font-weight: 500;
+    color: var(--brand); letter-spacing: 0.3pt;
+    width: 22mm; flex-shrink: 0; line-height: 1.36;
+  }
+  .skill-body { font-size: 9pt; color: var(--near-black); line-height: 1.40; letter-spacing: 0.3pt; flex: 1; }
+  .skill-body .em-brand { color: var(--brand); }
+
+  /* EDUCATION & AWARDS */
+  .edu-row {
+    display: flex; justify-content: space-between;
+    align-items: baseline; font-size: 9.5pt; padding: 1.7mm 0;
+  }
+  .edu-row .school { font-family: var(--serif); font-weight: 500; font-size: 10.7pt; }
+  .edu-row .major { color: var(--olive); font-size: 9.5pt; }
+  .edu-row .date { color: var(--stone); font-variant-numeric: tabular-nums; font-size: 9pt; }
+
+  .no-break { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ PAGE 1 ═══════════ -->
+
+<div class="header">
+  <div>
+    <div class="name serif">郭江涛</div>
+    <div class="tagline">算法工程师 · <span class="accent">计算机视觉 / 多模态信号处理</span></div>
+  </div>
+  <div class="contact">
+    <span class="role">算法工程 / 视觉 AI</span><br>
+    <a href="https://fmvpjet.github.io/">fmvpjet.github.io</a>
+    <span class="sep">·</span>
+    <a href="https://github.com/FMVPJet">GitHub @FMVPJet</a><br>
+    <a href="tel:+8613703922343">(+86) 137-0392-2343</a>
+    <span class="sep">·</span>
+    <a href="mailto:JetKwok827@gmail.com">JetKwok827@gmail.com</a>
+    <span class="sep">·</span>
+    <span class="loc">郑州</span>
+  </div>
+</div>
+
+<div class="metrics">
+  <div class="metric">
+    <span class="metric-value serif">4<span class="unit">年</span></span>
+    <span class="metric-label">算法工程经验</span>
+  </div>
+  <div class="metric">
+    <span class="metric-value serif">5<span class="unit">项</span></span>
+    <span class="metric-label">发明专利（3 项第一发明人）</span>
+  </div>
+  <div class="metric">
+    <span class="metric-value serif">1<span class="unit">篇</span></span>
+    <span class="metric-label">SCI Q1 论文合著（Information Fusion）</span>
+  </div>
+  <div class="metric">
+    <span class="metric-value serif">1<span class="unit">/28</span></span>
+    <span class="metric-label">本科专业成绩排名</span>
+  </div>
+</div>
+
+<section>
+  <div class="section-title">个人简介</div>
+  <div class="summary">
+    算法工程师，深耕<span class="hl">计算机视觉与多模态信号处理</span>四年——以第一发明人持有 <span class="hl">3 项发明专利</span>，硕士期间研究成果发表于 SCI Q1 期刊 Information Fusion。既能独立闭合工业缺陷检测从算法设计到产线部署的全链路，也能主导欠定盲源分离等前沿课题的方法创新。专长：目标检测与图像分割、生成对抗网络、对比学习表征、工业视觉检测、欠定盲源信号分离。
+  </div>
+</section>
+
+<section>
+  <div class="section-title">工作经历<span class="sub">2022.07 — 至今 · 工业视觉 → 科研算法</span></div>
+
+  <div class="timeline">
+    <div class="tl-step">
+      <div class="tl-top"><div class="tl-year serif">2022</div><div class="tl-head">工业落地</div></div>
+      <div class="tl-body">中科慧远项目端负责人：从算法设计到现场部署，独立闭合缺陷检测全链路。</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-top"><div class="tl-year serif">2023</div><div class="tl-head">科研算法</div></div>
+      <div class="tl-body">加入信大院，转向 AI 前沿课题，专注多模态数据处理与信号识别分离研究。</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-top"><div class="tl-year serif">现在</div><div class="tl-head">多模态深化</div></div>
+      <div class="tl-body">主导欠定盲源分离方向，构建自编码器联合 FastICA 的端到端分离框架。</div>
+    </div>
+  </div>
+
+  <!-- Project 1 -->
+  <div class="project">
+    <div class="proj-head">
+      <span class="proj-name serif">欠定通道盲源信号分离</span>
+      <span class="proj-kind">· 科研项目</span>
+      <span class="proj-role">算法负责人</span>
+    </div>
+    <div class="proj-lines">
+      <div class="proj-row">
+        <div class="proj-label">角色</div>
+        <div class="proj-text">郑州信大先进技术研究院在研项目，目标为在欠定通道条件下实现多模态混叠信号的识别与盲分离。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">动作</div>
+        <div class="proj-text">针对观测通道数少于源信号数、传统 ICA 在欠定条件下失效的核心难点，基于 PyTorch 设计自编码器联合快速独立分量分析（FastICA）的端到端框架：以自编码器学习信号潜在表征、补足维度缺陷，再经 FastICA 完成独立分量解混；自建多路混叠信号模拟数据生成管线支撑离线训练与验证，并复现多个 SOTA 算法作为基线对照。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">结果</div>
+        <div class="proj-text">模拟信号集上分离信噪比较传统 FastICA 基线提升 〔待填 X〕，验证欠定场景下方法有效；核心方法已提交<span class="hl">发明专利</span>申请（第一发明人，进行中），项目进入工程化落地阶段。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 2 -->
+  <div class="project">
+    <div class="proj-head">
+      <span class="proj-name serif">工业缺陷视觉检测系统</span>
+      <span class="proj-kind">· 工业落地</span>
+      <span class="proj-role">项目端算法负责人</span>
+    </div>
+    <div class="proj-lines">
+      <div class="proj-row">
+        <div class="proj-label">角色</div>
+        <div class="proj-text">中科慧远多条工业产线缺陷检测项目，独立对接算法方案设计、模型部署与现场调优。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">动作</div>
+        <div class="proj-text">基于 C++/OpenCV 实现图像增强预处理，基于 PyTorch 搭建分割与检测模型；在产线现场标定检测流程模板，迭代优化过检与漏检。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">结果</div>
+        <div class="proj-text">完成 <span class="hl">〔待填〕条产线</span>（〔待填产品，如玻璃盖板〕）算法落地交付，漏检率降至 〔待填 X%〕、检出率达 〔待填 99.X%〕；输出发明专利 1 项（CN116342434A，已公开实审）；培训应用工程师完成交接闭环。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 3 -->
+  <div class="project">
+    <div class="proj-head">
+      <span class="proj-name serif">缺陷分割模型评估与优化</span>
+      <span class="proj-kind">· 中科院自动化所实习</span>
+      <span class="proj-role">实验验证</span>
+    </div>
+    <div class="proj-lines">
+      <div class="proj-row">
+        <div class="proj-label">角色</div>
+        <div class="proj-text">陶显副教授课题组项目实习，配合团队开展工业缺陷图像分割模型全方位实验验证。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">动作</div>
+        <div class="proj-text">实施模型检出能力、IOU、置信度与运行效率评估；开展缺陷位置平移不变性测试、图像通道对检测影响分析、基于 mmdetection 的目标检测框架应用等专项实验。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">结果</div>
+        <div class="proj-text">每周复盘设备运行情况并分析问题，每月工作闭环总结，支撑项目方向决策。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="section-title">硕士研究课题</div>
+
+  <div class="project">
+    <div class="proj-head">
+      <span class="proj-name serif">外观专利多视角图像生成与检索</span>
+      <span class="proj-kind">· 广东工业大学</span>
+      <span class="proj-role">算法研究</span>
+    </div>
+    <div class="proj-lines">
+      <div class="proj-row">
+        <div class="proj-label">角色</div>
+        <div class="proj-text">广东省知识产权大数据实验室 &amp; 国家自然科学基金联合项目，针对专利库视角缺失致检索精度下降问题。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">动作</div>
+        <div class="proj-text">提出基于 GAN 的多视角专利图像生成方法，在 MultiPIE、CelebA、3D Chairs 数据集验证；以对比学习将多视角特征解离为视角相关与无关部分，将无关特征用于分类与检索。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">结果</div>
+        <div class="proj-text">研究成果发表于 <span class="hl">Information Fusion</span>（SCI Q1，合著）；以第一发明人获授权发明专利 1 项（CN113743499A），并参与相关授权专利 2 项。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PAGE 2 ═══════════ -->
+
+<section class="page-break">
+  <div class="section-title">其他项目经历</div>
+
+  <div class="project">
+    <div class="proj-head">
+      <span class="proj-name serif">疲劳驾驶监测及预警系统</span>
+      <span class="proj-kind">· 国家级大学生创新创业项目</span>
+      <span class="proj-role">算法 &amp; 开发负责人</span>
+    </div>
+    <div class="proj-lines">
+      <div class="proj-row">
+        <div class="proj-label">角色</div>
+        <div class="proj-text">国家级大创项目（NO.2018XSCXCY012，验收合格），本人负责算法设计与全部代码实现。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">动作</div>
+        <div class="proj-text">基于 OpenCV Haarcascades 级联分类器实现人脸检测，结合二值化、直方图统计追踪眼周关键点，判断疲劳状态并实时预警。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">结果</div>
+        <div class="proj-text">顺利通过<span class="hl">国家级验收</span>，实现 〔待填 X fps〕 实时疲劳检测与屏幕预警，识别准确率 〔待填 X%〕，完整代码独立交付。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="proj-head">
+      <span class="proj-name serif">Wallpaper Box 壁纸分享小程序</span>
+      <span class="proj-kind">· 独立开发</span>
+      <span class="proj-role">全栈独立完成</span>
+    </div>
+    <div class="proj-lines">
+      <div class="proj-row">
+        <div class="proj-label">角色</div>
+        <div class="proj-text">个人独立开发的微信壁纸分享小程序，从零承担代码、云部署、UI 设计与运营推广。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">动作</div>
+        <div class="proj-text">微信小程序原生框架（HTML / JS / CSS）开发，接入微信云开发完成图片存储分发，设计 UI 并联动公众号运营。</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">结果</div>
+        <div class="proj-text">已上线微信，累计用户 <span class="hl">500+</span>，验证了从产品设计到上线运营的全流程能力。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">学术成果</div>
+
+  <div class="pub-item">
+    <div class="pub-title">Y. Lu, J. Cao, S. He, <strong>J. Guo</strong>, et al. Learning Invariant and Uniformly Distributed Representations for Multi-view Generation.</div>
+    <div class="pub-meta">
+      <span class="badge">SCI Q1</span>
+      <em>Information Fusion</em> · Accepted
+    </div>
+  </div>
+
+  <div class="patent-grid" style="margin-top:1.5mm;">
+    <div class="patent-item">
+      <div class="patent-name">一种基于对比学习的视角无关特征解离方法及系统</div>
+      <div class="patent-meta">郭江涛 等 · CN113743499A · <span class="status">已授权</span></div>
+    </div>
+    <div class="patent-item">
+      <div class="patent-name">一种图像处理方法、装置、设备及存储介质</div>
+      <div class="patent-meta">郭江涛 等 · CN116342434A · <span class="status">公开实审</span></div>
+    </div>
+    <div class="patent-item">
+      <div class="patent-name">一种基于自编码器联合快速独立分量分析的盲源分离方法</div>
+      <div class="patent-meta">郭江涛 等 · <span class="status">进行中</span></div>
+    </div>
+    <div class="patent-item">
+      <div class="patent-name">一种基于对比学习的多视图生成方法</div>
+      <div class="patent-meta">卢育钦, 曹江中, 戴青云, 周琦量, 郭江涛 等 · CN112598775A · <span class="status">已授权</span></div>
+    </div>
+    <div class="patent-item">
+      <div class="patent-name">一种基于隐空间主成分分析的图像可控生成方法及系统</div>
+      <div class="patent-meta">周琦量, 曹江中, 戴青云, 卢育钦, 郭江涛 · CN113361659A · <span class="status">已授权</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">核心能力</div>
+  <div class="skill-row">
+    <div class="skill-label">深度学习框架</div>
+    <div class="skill-body">熟练使用 <span class="em-brand">PyTorch</span>，具备分类、检测（mmdetection）、分割、生成（GAN）、对比学习的完整训练与调优经验；熟悉自定义损失函数、训练策略与数据增强管线设计。</div>
+  </div>
+  <div class="skill-row">
+    <div class="skill-label">计算机视觉</div>
+    <div class="skill-body">精通 <span class="em-brand">OpenCV</span> 图像处理（增强、混合、形态学、关键点追踪）；熟悉工业缺陷检测全流程，具备现场数据采集、标注、模型部署与过漏检迭代优化经验。</div>
+  </div>
+  <div class="skill-row">
+    <div class="skill-label">编程语言</div>
+    <div class="skill-body"><span class="em-brand">Python</span>（主力）、C++（OpenCV / 工业图像处理）、MATLAB、LaTeX；具备微信小程序开发能力（HTML / CSS / JavaScript）。</div>
+  </div>
+  <div class="skill-row">
+    <div class="skill-label">信号处理</div>
+    <div class="skill-body">熟悉一维数据深度学习算法；了解独立分量分析（ICA / FastICA）、盲源分离理论及欠定混叠信号处理方法。</div>
+  </div>
+  <div class="skill-row">
+    <div class="skill-label">传统机器学习</div>
+    <div class="skill-body">熟悉 LR、SVM、XGBoost 等主流方法及其在工业检测中的应用；英语 CET-6，可流畅阅读英文文献与撰写技术文档及专利。</div>
+  </div>
+</section>
+
+<section class="no-break">
+  <div class="section-title">教育背景 &amp; 荣誉</div>
+  <div class="edu-row">
+    <div>
+      <span class="school serif">广东工业大学</span>
+      <span class="major">　· 硕士 · 电子与通信工程 · 戴青云教授课题组 · GPA 3.48 / 4.00</span>
+    </div>
+    <div class="date">2019.09 — 2022.07</div>
+  </div>
+  <div class="edu-row">
+    <div>
+      <span class="school serif">黄河科技学院</span>
+      <span class="major">　· 本科 · 电子与通信工程 · 专业成绩排名 <strong>1 / 28</strong>，校三好学生 &amp; 优秀毕业生</span>
+    </div>
+    <div class="date">2015.09 — 2019.07</div>
+  </div>
+</section>
+
+</body>
+</html>
