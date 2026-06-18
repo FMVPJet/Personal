@@ -51,7 +51,7 @@ const MiniPic = ({ onClick, showOverlay = false }: MiniPicProps) => {
           img: "w-full h-full object-contain",
         }}
         radius="none"
-        src="mini.png"
+        src="/assets/images/badge_front.png"
       />
       {showOverlay && (
         <div className="absolute inset-0 flex items-end justify-center pb-4 z-10 pointer-events-none">

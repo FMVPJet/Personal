@@ -80,7 +80,7 @@ function Background({ theme }: { theme: string | undefined }) {
 }
 
 function Mini(props: any) {
-  const { scene, nodes, materials } = useGLTF("/mini.glb") as any;
+  const { scene, nodes, materials } = useGLTF("/assets/3d/card.glb") as any;
   useLayoutEffect(() => {
     Object.values(nodes).forEach((node) => {
       if (node instanceof THREE.Mesh) {

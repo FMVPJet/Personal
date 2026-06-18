@@ -1,20 +1,20 @@
 import HomeClient from "@/components/home-client";
 
 export default function Page() {
-  // Placeholder images - replace with real ones
+  // Image assets from /public/assets
   const photos = [
-    "/photos/1.jpg",
-    "/photos/2.jpg",
-    "/photos/3.jpg",
-    "/photos/4.jpg",
-    "/photos/5.jpg",
+    "/assets/images/profile/me.jpg",
+    "/assets/images/profile/iflytek.png",
+    "/assets/images/profile/GDUT.png",
+    "/assets/images/profile/hhstu.png",
+    "/assets/images/badge_front.png",
   ];
-  const avatarUrl = "/avatar.jpg";
-  const dogUrl = "/dog.jpg";
-  const actionImageUrl = "/projects/action.png";
-  const webagentUrl = "/projects/webagent.png";
-  const chatbotUrl = "/projects/chatbot.png";
-  const paperUrl = "/projects/paper.png";
+  const avatarUrl = "/assets/images/profile/me.jpg";
+  const dogUrl = "/assets/images/profile/me.webp";
+  const actionImageUrl = "/assets/images/badge_front.png";
+  const webagentUrl = "/assets/images/profile/iflytek.png";
+  const chatbotUrl = "/assets/images/profile/GDUT.png";
+  const paperUrl = "/assets/images/profile/hhstu.png";
 
   return (
     <HomeClient
