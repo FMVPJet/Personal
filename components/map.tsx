@@ -52,7 +52,7 @@ const MapComponent: React.FC = () => {
           alt="Map"
           className="w-full h-full object-cover"
           height={300}
-          src="/assets/images/tag_texture.png"
+          src="/assets/images/map-fallback.jpg"
           width={300}
         />
       )}
