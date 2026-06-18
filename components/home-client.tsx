@@ -15,7 +15,6 @@ import { ThemeSwitch } from "@/components/theme-switch";
 import MiniPic from "@/components/mini-pic";
 import Actions from "@/components/actions";
 import { layouts, tabCards } from "@/config/layout";
-import { icons } from "@/config/icons";
 import useWindowWidth from "@/hooks/useWindowWidth";
 
 const LoadingPlaceholder = () => (
@@ -24,8 +23,7 @@ const LoadingPlaceholder = () => (
   </div>
 );
 
-const IconCloud = dynamic(() => import("@/components/icon-cloud"), {
-  ssr: false,
+const Skills = dynamic(() => import("@/components/skills"), {
   loading: LoadingPlaceholder,
 });
 
@@ -121,9 +119,9 @@ export default function HomeClient({
         <MapComponent />
       </div>
     ),
-    iconCloud: (
-      <div key="iconCloud" className={cn(CARD_BASE, "relative p-10 md:p-8")}>
-        <IconCloud iconSlugs={icons} />
+    skills: (
+      <div key="skills" className={CARD_BASE}>
+        <Skills />
       </div>
     ),
     webAgent: (

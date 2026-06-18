@@ -2,7 +2,7 @@ import type { Layouts } from "react-grid-layout";
 
 // Which cards appear in each tab. themeSwitch lives in the tab bar, not the grid.
 export const tabCards: Record<string, string[]> = {
-  home: ["avatar", "cardStack", "iconCloud", "miniModel", "mapComponent"],
+  home: ["avatar", "cardStack", "skills", "miniModel", "mapComponent"],
   project: ["webAgent", "chatBot", "animatedEmoji", "actions", "paper"],
 };
 
@@ -11,35 +11,35 @@ export const layouts: Record<string, Layouts> = {
     lg: [
       { i: "avatar", x: 0, y: 0, w: 2, h: 2 },
       { i: "cardStack", x: 2, y: 0, w: 2, h: 2 },
-      { i: "iconCloud", x: 0, y: 2, w: 1, h: 2 },
+      { i: "skills", x: 0, y: 2, w: 1, h: 2 },
       { i: "miniModel", x: 1, y: 2, w: 1, h: 2 },
       { i: "mapComponent", x: 2, y: 2, w: 2, h: 2 },
     ],
     md: [
       { i: "avatar", x: 0, y: 0, w: 2, h: 2 },
       { i: "cardStack", x: 2, y: 0, w: 2, h: 2 },
-      { i: "iconCloud", x: 0, y: 2, w: 1, h: 2 },
+      { i: "skills", x: 0, y: 2, w: 1, h: 2 },
       { i: "miniModel", x: 1, y: 2, w: 1, h: 2 },
       { i: "mapComponent", x: 2, y: 2, w: 2, h: 2 },
     ],
     sm: [
       { i: "avatar", x: 0, y: 0, w: 2, h: 2 },
       { i: "cardStack", x: 0, y: 2, w: 2, h: 2 },
-      { i: "iconCloud", x: 0, y: 4, w: 1, h: 2 },
+      { i: "skills", x: 0, y: 4, w: 1, h: 2 },
       { i: "miniModel", x: 1, y: 4, w: 1, h: 2 },
       { i: "mapComponent", x: 0, y: 6, w: 2, h: 2 },
     ],
     xs: [
       { i: "avatar", x: 0, y: 0, w: 2, h: 2 },
       { i: "cardStack", x: 0, y: 2, w: 2, h: 2 },
-      { i: "iconCloud", x: 0, y: 4, w: 1, h: 2 },
+      { i: "skills", x: 0, y: 4, w: 1, h: 2 },
       { i: "miniModel", x: 1, y: 4, w: 1, h: 2 },
       { i: "mapComponent", x: 0, y: 6, w: 2, h: 2 },
     ],
     xxs: [
       { i: "avatar", x: 0, y: 0, w: 2, h: 2 },
       { i: "cardStack", x: 0, y: 2, w: 2, h: 2 },
-      { i: "iconCloud", x: 0, y: 4, w: 1, h: 2 },
+      { i: "skills", x: 0, y: 4, w: 1, h: 2 },
       { i: "miniModel", x: 1, y: 4, w: 1, h: 2 },
       { i: "mapComponent", x: 0, y: 6, w: 2, h: 2 },
     ],
