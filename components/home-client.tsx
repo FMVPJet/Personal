@@ -59,7 +59,7 @@ const Chatbot = dynamic(() => import("@/components/chatbot"), {
 });
 
 const CARD_BASE =
-  "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center overflow-hidden z-[1]";
+  "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight rounded-[2rem] flex justify-center items-center overflow-hidden z-[1]";
 
 interface HomeClientProps {
   photos: string[];
@@ -188,7 +188,8 @@ export default function HomeClient({
           settled ? "layout-settled" : "layout-initializing",
         )}
         cols={{ lg: 4, md: 4, sm: 2, xs: 2, xxs: 2 }}
-        draggableCancel=".no-drag"
+        isDraggable={false}
+        isResizable={false}
         layouts={layouts[tabSelected]}
         margin={[15, 15]}
         width={width}
