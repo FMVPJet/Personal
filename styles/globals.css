@@ -1,5 +1,8 @@
 @import "tailwindcss";
+@import "mapbox-gl/dist/mapbox-gl.css";
 @plugin "../hero.ts";
+
+@custom-variant dark (&:is(.dark *));
 
 @theme {
   --color-darkBg: #0f1217;
@@ -46,6 +49,3 @@
 .react-grid-item > .react-resizable-handle {
   display: none;
 }
-
-/* mapbox-gl styles */
-@import "mapbox-gl/dist/mapbox-gl.css";
