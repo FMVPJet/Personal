@@ -106,11 +106,6 @@ export default function HomeClient({
         <DockDemo />
       </div>
     ),
-    themeSwitch: (
-      <div key="themeSwitch" className={CARD_BASE}>
-        <ThemeSwitch />
-      </div>
-    ),
     cardStack: (
       <div key="cardStack" className={cn(CARD_BASE, "z-[2]")}>
         <CardStack photos={photos} />
@@ -166,23 +161,26 @@ export default function HomeClient({
 
   return (
     <div className="flex justify-center flex-col items-center">
-      <Tabs
-        aria-label="Tabs"
-        className="mb-2 md:mb-6 rounded-full"
-        classNames={{
-          cursor: "shadow-none",
-          tabList:
-            "bg-[#ece7e7] dark:bg-darkBg border-2 border-transparent dark:border-knight rounded-full",
-        }}
-        radius={"full"}
-        selectedKey={tabSelected}
-        onSelectionChange={(selected) => {
-          setTabSelected(selected as string);
-        }}
-      >
-        <Tab key="home" title="Home" />
-        <Tab key="project" title="Project" />
-      </Tabs>
+      <div className="mb-2 md:mb-6 flex items-center gap-3">
+        <Tabs
+          aria-label="Tabs"
+          className="rounded-full"
+          classNames={{
+            cursor: "shadow-none",
+            tabList:
+              "bg-[#ece7e7] dark:bg-darkBg border-2 border-transparent dark:border-knight rounded-full",
+          }}
+          radius={"full"}
+          selectedKey={tabSelected}
+          onSelectionChange={(selected) => {
+            setTabSelected(selected as string);
+          }}
+        >
+          <Tab key="home" title="Home" />
+          <Tab key="project" title="Project" />
+        </Tabs>
+        <ThemeSwitch />
+      </div>
 
       <Responsive
         breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
