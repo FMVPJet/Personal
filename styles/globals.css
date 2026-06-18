@@ -4,6 +4,11 @@
 @theme {
   --color-darkBg: #0f1217;
   --color-knight: #2a2f35;
+  --color-midnight: #1e2228;
+  --color-cardBlue: #8cc9fe;
+  --color-cardGreen: #63ccae;
+  --color-cardPink: #ffbfd1;
+  --color-cardYellow: #ffdf9a;
 
   --font-family-oleo: var(--font-oleo);
 }
@@ -41,3 +46,6 @@
 .react-grid-item > .react-resizable-handle {
   display: none;
 }
+
+/* mapbox-gl styles */
+@import "mapbox-gl/dist/mapbox-gl.css";

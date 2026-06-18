@@ -18,6 +18,7 @@ export const siteConfig = {
   author: "Jet Kwok",
   links: {
     github: "https://github.com/FMVPJet",
+    linkedin: "https://linkedin.com/in/jetkwok",
     email: "mailto:JetKwok827@gmail.com",
   },
 };
