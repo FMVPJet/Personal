@@ -93,7 +93,7 @@ export default function HomeClient({
     avatar: (
       <div
         key="avatar"
-        className={cn(CARD_BASE, "flex-col justify-between p-5")}
+        className={cn(CARD_BASE, "flex-col justify-between items-stretch p-5")}
       >
         <AvatarTransition avatarUrl={avatarUrl} dogUrl={dogUrl} />
         <p className="text-sm md:text-medium">
@@ -161,14 +161,13 @@ export default function HomeClient({
 
   return (
     <div className="flex justify-center flex-col items-center">
-      <div className="mb-2 md:mb-6 flex items-center gap-3">
+      <div className="mb-2 md:mb-6 flex items-center gap-2 rounded-full bg-[#ece7e7] dark:bg-darkBg border-2 border-transparent dark:border-knight p-1 pr-3">
         <Tabs
           aria-label="Tabs"
           className="rounded-full"
           classNames={{
             cursor: "shadow-none",
-            tabList:
-              "bg-[#ece7e7] dark:bg-darkBg border-2 border-transparent dark:border-knight rounded-full",
+            tabList: "bg-transparent rounded-full",
           }}
           radius={"full"}
           selectedKey={tabSelected}
