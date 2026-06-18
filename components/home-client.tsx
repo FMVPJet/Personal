@@ -14,7 +14,7 @@ import { DockDemo } from "@/components/dock-demo";
 import { ThemeSwitch } from "@/components/theme-switch";
 import MiniPic from "@/components/mini-pic";
 import Actions from "@/components/actions";
-import { layouts, selectedCard } from "@/config/layout";
+import { layouts, tabCards } from "@/config/layout";
 import { icons } from "@/config/icons";
 import useWindowWidth from "@/hooks/useWindowWidth";
 
@@ -58,6 +58,9 @@ const Chatbot = dynamic(() => import("@/components/chatbot"), {
   loading: LoadingPlaceholder,
 });
 
+const CARD_BASE =
+  "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center overflow-hidden z-[1]";
+
 interface HomeClientProps {
   photos: string[];
   avatarUrl: string;
@@ -78,12 +81,88 @@ export default function HomeClient({
   paperUrl,
 }: HomeClientProps) {
   const { width, settled } = useWindowWidth();
-  const [tabSelected, setTabSelected] = useState("all");
+  const [tabSelected, setTabSelected] = useState("home");
   const [show3D, setShow3D] = useState(false);
 
   if (!width) {
     return null;
   }
+
+  // All card nodes keyed by id; only those in the active tab are rendered.
+  const cards: Record<string, React.ReactNode> = {
+    avatar: (
+      <div
+        key="avatar"
+        className={cn(CARD_BASE, "flex-col justify-between p-5")}
+      >
+        <AvatarTransition avatarUrl={avatarUrl} dogUrl={dogUrl} />
+        <p className="text-sm md:text-medium">
+          Hey! I&apos;m <span className="font-oleo text-2xl"> Jet</span>, a
+          Computer Vision Engineer at iFLYTEK working on deep learning and
+          MLOps. Passionate about building AI systems that bridge research and
+          production. Outside work, I enjoy exploring new ML papers and
+          contributing to open source!
+        </p>
+        <DockDemo />
+      </div>
+    ),
+    themeSwitch: (
+      <div key="themeSwitch" className={CARD_BASE}>
+        <ThemeSwitch />
+      </div>
+    ),
+    cardStack: (
+      <div key="cardStack" className={cn(CARD_BASE, "z-[2]")}>
+        <CardStack photos={photos} />
+      </div>
+    ),
+    animatedEmoji: (
+      <div key="animatedEmoji" className={CARD_BASE}>
+        <AnimatedEmoji />
+      </div>
+    ),
+    mapComponent: (
+      <div key="mapComponent" className={CARD_BASE}>
+        <MapComponent />
+      </div>
+    ),
+    iconCloud: (
+      <div key="iconCloud" className={cn(CARD_BASE, "relative p-10 md:p-8")}>
+        <IconCloud iconSlugs={icons} />
+      </div>
+    ),
+    webAgent: (
+      <div key="webAgent" className={CARD_BASE}>
+        <WebAgent webAgentUrl={webagentUrl} />
+      </div>
+    ),
+    chatBot: (
+      <div key="chatBot" className={CARD_BASE}>
+        <Chatbot chatbotUrl={chatbotUrl} />
+      </div>
+    ),
+    miniModel: (
+      <div key="miniModel" className={CARD_BASE}>
+        {show3D ? (
+          <MiniModel />
+        ) : (
+          <MiniPic onClick={() => setShow3D(true)} showOverlay />
+        )}
+      </div>
+    ),
+    actions: (
+      <div key="actions" className={CARD_BASE}>
+        <Actions photoUrl={actionImageUrl} />
+      </div>
+    ),
+    paper: (
+      <div key="paper" className={CARD_BASE}>
+        <Paper paperUrl={paperUrl} />
+      </div>
+    ),
+  };
+
+  const visibleKeys = tabCards[tabSelected] ?? [];
 
   return (
     <div className="flex justify-center flex-col items-center">
@@ -96,13 +175,13 @@ export default function HomeClient({
             "bg-[#ece7e7] dark:bg-darkBg border-2 border-transparent dark:border-knight rounded-full",
         }}
         radius={"full"}
+        selectedKey={tabSelected}
         onSelectionChange={(selected) => {
           setTabSelected(selected as string);
         }}
       >
-        <Tab key="all" title="All" />
-        <Tab key="about" title="About" />
-        <Tab key="projects" title="Projects" />
+        <Tab key="home" title="Home" />
+        <Tab key="project" title="Project" />
       </Tabs>
 
       <Responsive
@@ -117,137 +196,8 @@ export default function HomeClient({
         margin={[15, 15]}
         width={width}
       >
-        <div
-          key="avatar"
-          className={cn(
-            "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex flex-col justify-between p-5 overflow-hidden z-[1]",
-            selectedCard[tabSelected]["avatar"] ? "opacity-100" : "opacity-50",
-          )}
-        >
-          <AvatarTransition avatarUrl={avatarUrl} dogUrl={dogUrl} />
-          <p className="text-sm md:text-medium">
-            Hey! I&apos;m <span className="font-oleo text-2xl"> Jet</span>, a
-            Computer Vision Engineer at iFLYTEK working on deep learning and
-            MLOps. Passionate about building AI systems that bridge research and
-            production. Outside work, I enjoy exploring new ML papers and
-            contributing to open source!
-          </p>
-          <DockDemo />
-        </div>
-        <div
-          key="themeSwitch"
-          className={cn(
-            "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[1]",
-            selectedCard[tabSelected]["themeSwitch"]
-              ? "opacity-100"
-              : "opacity-50",
-          )}
-        >
-          <ThemeSwitch />
-        </div>
-        <div
-          key="cardStack"
-          className={cn(
-            "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[2]",
-            selectedCard[tabSelected]["cardStack"]
-              ? "opacity-100"
-              : "opacity-50",
-          )}
-        >
-          <CardStack photos={photos} />
-        </div>
-        <div
-          key="animatedEmoji"
-          className={cn(
-            "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[1]",
-            selectedCard[tabSelected]["animatedEmoji"]
-              ? "opacity-100"
-              : "opacity-50",
-          )}
-        >
-          <AnimatedEmoji />
-        </div>
-        <div
-          key="mapComponent"
-          className={cn(
-            "bg-white dark:bg-darkBg cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[1]",
-            selectedCard[tabSelected]["mapComponent"]
-              ? "opacity-100"
-              : "opacity-50",
-          )}
-        >
-          <MapComponent />
-        </div>
-        <div
-          key="iconCloud"
-          className={cn(
-            "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center relative overflow-hidden p-10 md:p-8 z-[1]",
-            selectedCard[tabSelected]["iconCloud"]
-              ? "opacity-100"
-              : "opacity-50",
-          )}
-        >
-          <IconCloud iconSlugs={icons} />
-        </div>
-        <div
-          key="webAgent"
-          className={cn(
-            "bg-white dark:bg-darkBg dark:border-2 dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center overflow-hidden z-[1]",
-            selectedCard[tabSelected]["webAgent"]
-              ? "opacity-100"
-              : "opacity-50",
-          )}
-        >
-          <WebAgent webAgentUrl={webagentUrl} />
-        </div>
-        <div
-          key="chatBot"
-          className={cn(
-            "bg-white dark:bg-darkBg dark:border-2 dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center overflow-hidden z-[1]",
-            selectedCard[tabSelected]["chatBot"] ? "opacity-100" : "opacity-50",
-          )}
-        >
-          <Chatbot chatbotUrl={chatbotUrl} />
-        </div>
-        <div
-          key="miniModel"
-          className={cn(
-            "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[1] overflow-hidden",
-            selectedCard[tabSelected]["miniModel"]
-              ? "opacity-100"
-              : "opacity-50",
-          )}
-        >
-          {show3D ? (
-            <MiniModel />
-          ) : (
-            <MiniPic onClick={() => setShow3D(true)} showOverlay />
-          )}
-        </div>
-        <div
-          key="actions"
-          className={cn(
-            "bg-white dark:bg-darkBg dark:border-2 dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center overflow-hidden z-[1]",
-            selectedCard[tabSelected]["actions"] ? "opacity-100" : "opacity-50",
-          )}
-        >
-          <Actions photoUrl={actionImageUrl} />
-        </div>
-        <div
-          key="paper"
-          className={cn(
-            "bg-white dark:bg-darkBg dark:border-2 dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[1] overflow-hidden",
-            selectedCard[tabSelected]["paper"] ? "opacity-100" : "opacity-50",
-          )}
-        >
-          <Paper paperUrl={paperUrl} />
-        </div>
+        {visibleKeys.map((key) => cards[key])}
       </Responsive>
     </div>
   );
 }
-
-
-
-
-
