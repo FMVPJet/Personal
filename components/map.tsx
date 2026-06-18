@@ -46,17 +46,17 @@ const MapComponent: React.FC = () => {
   }, [theme]);
 
   return (
-    <div className="w-full h-full rounded-3xl overflow-hidden">
+    <div className="relative w-full h-full rounded-3xl overflow-hidden">
       {!mapLoaded && (
         <Image
           alt="Map"
-          className="w-full h-full object-cover"
-          height={300}
+          className="absolute inset-0 w-full h-full object-cover"
+          fill
+          sizes="(max-width: 768px) 300px, 400px"
           src="/assets/images/map-fallback.jpg"
-          width={300}
         />
       )}
-      <div ref={mapContainerRef} className="w-full h-full" />
+      <div ref={mapContainerRef} className="absolute inset-0 w-full h-full" />
       <div
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
             flex items-center justify-center
