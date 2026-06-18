@@ -1,7 +1,6 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
-import { Switch } from "@heroui/switch";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
 
@@ -19,32 +18,30 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className }) => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  // Reserve space before mount to avoid layout shift in the tab pill.
+  if (!mounted) {
+    return <div className="w-8 h-8" aria-hidden="true" />;
+  }
 
   const isLight = theme === "light";
 
   return (
-    <Switch
+    <button
+      type="button"
+      aria-label={`Switch to ${isLight ? "dark" : "light"} mode`}
       className={clsx(
-        "transition-opacity hover:opacity-80 cursor-pointer",
+        "flex items-center justify-center w-8 h-8 rounded-full",
+        "text-default-600 hover:text-default-900",
+        "transition-colors cursor-pointer",
         className,
       )}
-      classNames={{
-        wrapper:
-          "w-[4.5rem] h-10 group-data-[selected=true]:bg-midnight bg-[#1e2228]",
-        thumb: "w-8 h-8 group-data-[selected=true]:ms-8",
-        base: "w-[4.5rem] h-10",
-        thumbIcon: "w-5 h-5",
-      }}
-      isSelected={isLight}
-      thumbIcon={({ isSelected, className: iconClassName }) =>
-        isSelected ? (
-          <SunIcon className={iconClassName} />
-        ) : (
-          <MoonIcon className={iconClassName} />
-        )
-      }
-      onValueChange={(selected) => setTheme(selected ? "light" : "dark")}
-    />
+      onClick={() => setTheme(isLight ? "dark" : "light")}
+    >
+      {isLight ? (
+        <SunIcon className="w-5 h-5" />
+      ) : (
+        <MoonIcon className="w-5 h-5" />
+      )}
+    </button>
   );
 };
