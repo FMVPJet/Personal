@@ -1,0 +1,146 @@
+<!-- Photo Grid Template (源自 boyang.hu 复刻，已清空内容)
+     8 项布局：.wide 在第 1/5/8 位，三分类循环
+
+     每项契约：
+     .item.<category>               ← 筛选靠 class
+       a.item-wrap                  ← 无 href = 不可点击，保留 hover
+         .item-content
+           .item-image              ← inline background-image: url(...)
+           .item-caption
+             h2.item-title          ← 标题（支持换行，用 <br> 或两次空格）
+             .item-title-hover      ← hover 时替换的文字，如 "View Project"
+             h4.item-cat            ← 分类标签文字
+-->
+
+<!-- Filters (可选，整块去掉或改分类名) -->
+<div id="filters">
+  <div data-filter="*">All</div>
+  <div data-filter=".category-a">Category A</div>
+  <div data-filter=".category-b">Category B</div>
+  <div data-filter=".category-c">Category C</div>
+</div>
+
+<!-- Portfolio Grid -->
+<div id="portfolio" class="title-big">
+
+  <!-- Item 1: wide, category-a -->
+  <div class="item wide split-title category-a">
+    <a class="item-wrap">
+      <div class="item-content">
+        <div class="item-image" style="background-image:url(YOUR_IMAGE_URL)" role="img" aria-label="TITLE_TEXT"></div>
+        <div class="item-caption">
+          <h2 class="item-title">Title Text<br>Second Line</h2>
+          <div class="item-title-hover">Hover Text</div>
+          <h4 class="item-cat">Category A</h4>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Item 2: category-b -->
+  <div class="item split-title category-b">
+    <a class="item-wrap">
+      <div class="item-content">
+        <div class="item-image" style="background-image:url(YOUR_IMAGE_URL)" role="img" aria-label="TITLE_TEXT"></div>
+        <div class="item-caption">
+          <h2 class="item-title">Title</h2>
+          <div class="item-title-hover">Hover Text</div>
+          <h4 class="item-cat">Category B</h4>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Item 3: category-c -->
+  <div class="item split-title category-c">
+    <a class="item-wrap">
+      <div class="item-content">
+        <div class="item-image" style="background-image:url(YOUR_IMAGE_URL)" role="img" aria-label="TITLE_TEXT"></div>
+        <div class="item-caption">
+          <h2 class="item-title">Title</h2>
+          <div class="item-title-hover">Hover Text</div>
+          <h4 class="item-cat">Category C</h4>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Item 4: category-a -->
+  <div class="item split-title category-a">
+    <a class="item-wrap">
+      <div class="item-content">
+        <div class="item-image" style="background-image:url(YOUR_IMAGE_URL)" role="img" aria-label="TITLE_TEXT"></div>
+        <div class="item-caption">
+          <h2 class="item-title">Title</h2>
+          <div class="item-title-hover">Hover Text</div>
+          <h4 class="item-cat">Category A</h4>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Item 5: wide, category-b -->
+  <div class="item wide split-title category-b">
+    <a class="item-wrap">
+      <div class="item-content">
+        <div class="item-image" style="background-image:url(YOUR_IMAGE_URL)" role="img" aria-label="TITLE_TEXT"></div>
+        <div class="item-caption">
+          <h2 class="item-title">Title</h2>
+          <div class="item-title-hover">Hover Text</div>
+          <h4 class="item-cat">Category B</h4>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Item 6: category-c -->
+  <div class="item split-title category-c">
+    <a class="item-wrap">
+      <div class="item-content">
+        <div class="item-image" style="background-image:url(YOUR_IMAGE_URL)" role="img" aria-label="TITLE_TEXT"></div>
+        <div class="item-caption">
+          <h2 class="item-title">Title</h2>
+          <div class="item-title-hover">Hover Text</div>
+          <h4 class="item-cat">Category C</h4>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Item 7: category-a -->
+  <div class="item split-title category-a">
+    <a class="item-wrap">
+      <div class="item-content">
+        <div class="item-image" style="background-image:url(YOUR_IMAGE_URL)" role="img" aria-label="TITLE_TEXT"></div>
+        <div class="item-caption">
+          <h2 class="item-title">Title</h2>
+          <div class="item-title-hover">Hover Text</div>
+          <h4 class="item-cat">Category A</h4>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Item 8: wide, category-b -->
+  <div class="item wide split-title category-b">
+    <a class="item-wrap">
+      <div class="item-content">
+        <div class="item-image" style="background-image:url(YOUR_IMAGE_URL)" role="img" aria-label="TITLE_TEXT"></div>
+        <div class="item-caption">
+          <h2 class="item-title">Title</h2>
+          <div class="item-title-hover">Hover Text</div>
+          <h4 class="item-cat">Category B</h4>
+        </div>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<!--
+布局规则：
+- .wide 占两格宽
+- 无 .wide 占一格
+- .split-title：标题换行用 <br> 或两次空格
+- 分类名（category-a/b/c）与 #filters 里的 data-filter 对应
+-->

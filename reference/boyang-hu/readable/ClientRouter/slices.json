@@ -1,0 +1,129 @@
+{
+ "note": "Concatenative decomposition: parts joined in order reproduce the chunk byte-for-byte. verify-reassembly.mjs is the gate.",
+ "chunk": "../../mirror/_pretty/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js",
+ "chunkSha256": "f84c34ff443de90066001541d982d59232e880df981fd79917b4f03695aa9ba6",
+ "chunkBytes": 22218,
+ "acorn": "8.14.0",
+ "parts": [
+  {
+   "file": "000-transition-state-and-helpers.js",
+   "kind": "preamble",
+   "start": 0,
+   "end": 1258,
+   "startLine": 1,
+   "lines": 44,
+   "bytes": 1258,
+   "sha256": "96bbc63d260df97b5d8aa6e0cde80dad85ed2644293e60f735d3f4ab00cc8794"
+  },
+  {
+   "file": "001-lifecycle-event-names.js",
+   "kind": "function",
+   "start": 1258,
+   "end": 3460,
+   "startLine": 45,
+   "lines": 68,
+   "bytes": 2202,
+   "sha256": "95b8b13afd33f7ec0871c1d2c7cef3faf33e85e5c663014af4d7efda06e04223"
+  },
+  {
+   "file": "002-transition-event-base.js",
+   "kind": "class",
+   "start": 3460,
+   "end": 4514,
+   "startLine": 112,
+   "lines": 42,
+   "bytes": 1054,
+   "sha256": "65fdd794a059bf691e47881cb5190ba141d690f07c7241af657339bb2cd0720c"
+  },
+  {
+   "file": "003-before-preparation-event.js",
+   "kind": "class",
+   "start": 4514,
+   "end": 4963,
+   "startLine": 153,
+   "lines": 18,
+   "bytes": 449,
+   "sha256": "8263819265fc067b526a47f9bba788626d8cad73096ca47e58c009f9e8cfd5f0"
+  },
+  {
+   "file": "004-before-swap-event.js",
+   "kind": "class",
+   "start": 4963,
+   "end": 7206,
+   "startLine": 170,
+   "lines": 62,
+   "bytes": 2243,
+   "sha256": "9e057e068f153eca478d6fec835a155edb949d8a71d13b400c10def0a30e588e"
+  },
+  {
+   "file": "005-fetch-html.js",
+   "kind": "function",
+   "start": 7206,
+   "end": 7922,
+   "startLine": 231,
+   "lines": 25,
+   "bytes": 716,
+   "sha256": "9e5a2703de40aee0354bf39e49c2c6a0753ed531d6e07b0f7c98519ff8ba9897"
+  },
+  {
+   "file": "006-swap-document.js",
+   "kind": "function",
+   "start": 7922,
+   "end": 10717,
+   "startLine": 255,
+   "lines": 74,
+   "bytes": 2795,
+   "sha256": "e6ffcb6706e5774f2e1116b937ed3b39a9656a129cfe842045d30e6fd0c97919"
+  },
+  {
+   "file": "007-run-view-transition.js",
+   "kind": "function",
+   "start": 10717,
+   "end": 11759,
+   "startLine": 328,
+   "lines": 25,
+   "bytes": 1042,
+   "sha256": "a710e1155594eb3b45c6f42205a8df58717ba370fde3fbc4a2617e4a73ce0c96"
+  },
+  {
+   "file": "008-navigate-and-scroll-restore.js",
+   "kind": "function",
+   "start": 11759,
+   "end": 17337,
+   "startLine": 352,
+   "lines": 157,
+   "bytes": 5578,
+   "sha256": "fd2093cf9630b4be95783b6405b96c2ea49d9712a308276b7c2756f96067e782"
+  },
+  {
+   "file": "009-prefetch-on-hover.js",
+   "kind": "function",
+   "start": 17337,
+   "end": 18225,
+   "startLine": 508,
+   "lines": 36,
+   "bytes": 888,
+   "sha256": "5cce8ab4eb22e1e54388eadc75fdc55c3e71fdc5739864bd77616db2e49c2c2f"
+  },
+  {
+   "file": "010-prefetch-schedule.js",
+   "kind": "function",
+   "start": 18225,
+   "end": 18750,
+   "startLine": 543,
+   "lines": 20,
+   "bytes": 525,
+   "sha256": "c717bb9c1802320ed03c311f4cdb1a5abdbe20bb85fcc7dd2973e3977cd22f57"
+  },
+  {
+   "file": "011-intercept-links-and-forms.js",
+   "kind": "function",
+   "start": 18750,
+   "end": 22218,
+   "startLine": 562,
+   "lines": 96,
+   "bytes": 3468,
+   "sha256": "6c9c1a97bc2416168758254a43224bd064e152ad1424c509a9197771f718a7ac"
+  }
+ ]
+}

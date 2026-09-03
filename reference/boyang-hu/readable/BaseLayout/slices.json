@@ -1,0 +1,189 @@
+{
+ "note": "Concatenative decomposition: parts joined in order reproduce the chunk byte-for-byte. verify-reassembly.mjs is the gate.",
+ "chunk": "../../mirror/_pretty/BaseLayout.astro_astro_type_script_index_0_lang.DLKZFUrW.js",
+ "chunkSha256": "63d51f47a224dc01fe51db868a0f4fb3c3336bc44b5a452a1d969e4d0205135b",
+ "chunkBytes": 148107,
+ "acorn": "8.14.0",
+ "parts": [
+  {
+   "file": "000-vite-dep-map-and-gsap-head.js",
+   "kind": "preamble",
+   "start": 0,
+   "end": 598,
+   "startLine": 1,
+   "lines": 19,
+   "bytes": 598,
+   "sha256": "ddd2f2494654e2d2327ca3ec6b5068452d79f20363e7e8f23190751ee6d6f2fa"
+  },
+  {
+   "file": "001-gsap-core-config-and-tween.js",
+   "kind": "var",
+   "start": 598,
+   "end": 82142,
+   "startLine": 20,
+   "lines": 1822,
+   "bytes": 81544,
+   "sha256": "acc3eef20f2dfe7dd09609eae89053bc258412057db6669fe2e0a1257c68b4f6"
+  },
+  {
+   "file": "002-gsap-css-plugin-and-registration.js",
+   "kind": "var",
+   "start": 82142,
+   "end": 110703,
+   "startLine": 1841,
+   "lines": 501,
+   "bytes": 28561,
+   "sha256": "a154f3dbac8364759adeb7b12e7ad5eb6c64a01b03c532089a3e92dd90f9d8c5"
+  },
+  {
+   "file": "003-scroll-to-top-control.js",
+   "kind": "function",
+   "start": 110703,
+   "end": 111826,
+   "startLine": 2341,
+   "lines": 24,
+   "bytes": 1123,
+   "sha256": "f1fc7b5ee7efc495223ad2643b0ef02da9bf49858a89be77997ede3a028358de"
+  },
+  {
+   "file": "004-reveal-on-intersect.js",
+   "kind": "function",
+   "start": 111826,
+   "end": 112365,
+   "startLine": 2364,
+   "lines": 16,
+   "bytes": 539,
+   "sha256": "4f4d87bfe923f94249916d0be9537d64b62f941bd321858a87d2cb94ac69cd4a"
+  },
+  {
+   "file": "005-hero-initial-state.js",
+   "kind": "function",
+   "start": 112365,
+   "end": 112984,
+   "startLine": 2379,
+   "lines": 27,
+   "bytes": 619,
+   "sha256": "e1161b6b59ce14680124a6c240f23061377352e51a5835740c1c6f42452fdcf6"
+  },
+  {
+   "file": "006-hero-entrance-timeline.js",
+   "kind": "function",
+   "start": 112984,
+   "end": 114366,
+   "startLine": 2405,
+   "lines": 52,
+   "bytes": 1382,
+   "sha256": "b995e3ff2ba7aa28cbf16e3900875f82947084ac202173cb818791fca184e229"
+  },
+  {
+   "file": "007-hero-parallax.js",
+   "kind": "function",
+   "start": 114366,
+   "end": 116294,
+   "startLine": 2456,
+   "lines": 50,
+   "bytes": 1928,
+   "sha256": "a7611b04c6ded7a2a0ea60ba1c071cd72030120243d42b630bba1045daa6c1da"
+  },
+  {
+   "file": "008-menu-overlay.js",
+   "kind": "function",
+   "start": 116294,
+   "end": 128609,
+   "startLine": 2505,
+   "lines": 275,
+   "bytes": 12315,
+   "sha256": "6fc67ab5d13f6e65a96308d5a58880a4ceb2c4c004c39c078dbb8b131d447eba"
+  },
+  {
+   "file": "009-photoswipe-lightbox.js",
+   "kind": "function",
+   "start": 128609,
+   "end": 129971,
+   "startLine": 2779,
+   "lines": 36,
+   "bytes": 1362,
+   "sha256": "0b61c39c97d7138e040b50bd30d561a2a15b01c29898533bc971708325a512c9"
+  },
+  {
+   "file": "010-slider-build.js",
+   "kind": "function",
+   "start": 129971,
+   "end": 131652,
+   "startLine": 2814,
+   "lines": 43,
+   "bytes": 1681,
+   "sha256": "82cafcc3b35f536a88a9d3f7fb9e94076642b7e56529a5208d259a8091831b2a"
+  },
+  {
+   "file": "011-carousel-build.js",
+   "kind": "function",
+   "start": 131652,
+   "end": 132634,
+   "startLine": 2856,
+   "lines": 28,
+   "bytes": 982,
+   "sha256": "3ecf0c9d8cfd0806f57930730d1f1a44f196968f680c94a8a1b8770f2549d20e"
+  },
+  {
+   "file": "012-justified-measure.js",
+   "kind": "function",
+   "start": 132634,
+   "end": 133544,
+   "startLine": 2883,
+   "lines": 29,
+   "bytes": 910,
+   "sha256": "cf0ae7f71fd4ea9aa81c6242751b48d5d910ba3607af5ec28b1d7b03a360d9f9"
+  },
+  {
+   "file": "013-justified-layout.js",
+   "kind": "function",
+   "start": 133544,
+   "end": 134381,
+   "startLine": 2911,
+   "lines": 31,
+   "bytes": 837,
+   "sha256": "c6de6048d5794fb2bdef9538452607e088c6d9e311e341bd5ccae9754ef1f6cc"
+  },
+  {
+   "file": "014-portfolio-item-hover.js",
+   "kind": "function",
+   "start": 134381,
+   "end": 137376,
+   "startLine": 2941,
+   "lines": 81,
+   "bytes": 2995,
+   "sha256": "a1a67be9f24f4176d0b5fe93b7f49e265c96733653ae9843ffbdfe95db9030f4"
+  },
+  {
+   "file": "015-page-title-reveal.js",
+   "kind": "function",
+   "start": 137376,
+   "end": 138817,
+   "startLine": 3021,
+   "lines": 44,
+   "bytes": 1441,
+   "sha256": "dfaedeb4bb3dbc0e5bb5618335b97c15bb343df31dc7bce0c72bc0f12840fc9e"
+  },
+  {
+   "file": "016-portfolio-filters.js",
+   "kind": "function",
+   "start": 138817,
+   "end": 140318,
+   "startLine": 3064,
+   "lines": 45,
+   "bytes": 1501,
+   "sha256": "dd0ac1ef9bb636f119e9ed6568c20655aaa5564d28276680a5830bc6bff7b940"
+  },
+  {
+   "file": "017-magnetic-cursor-and-lifecycle.js",
+   "kind": "function",
+   "start": 140318,
+   "end": 148107,
+   "startLine": 3108,
+   "lines": 218,
+   "bytes": 7789,
+   "sha256": "d0b0f815b3aa870dec4be94b9619ceddb7e96d8b3d3ad7b437dc728ee3cbd0b1"
+  }
+ ]
+}
