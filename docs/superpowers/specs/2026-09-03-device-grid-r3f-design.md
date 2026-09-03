@@ -12,14 +12,15 @@ Replace the homepage's clickable photography/project grid with four non-navigati
 
 ### In scope
 
-- Keep the existing four-tile grid layout and its visual spacing.
-- Replace each tile's background photo and project link with a client-side React Three Fiber canvas.
+- Keep the existing `.g-grid`/`.g-item` CSS grid rhythm and visual spacing, but replace the current eight photo data items with exactly four device items for this iteration.
+- Remove the homepage category/filter sidebar because project categories no longer apply to the device collection. Keep the global header, menu, footer, and site-level navigation.
+- Replace each tile's background photo and project link with a client-side React Three Fiber canvas. The four tiles use the existing full/half-height rhythm through an explicit `tileVariant` field: MacBook full-height, keyboard half-height, mouse full-height, and phone half-height.
 - Add four procedural device components built from Three.js geometry and materials:
   - MacBook Pro 14-inch-style laptop in black/space-black finish.
   - Compact low-profile keyboard with a keycap matrix.
   - Rounded black mouse with wheel and button seam.
   - Dark phone slab with glass face and camera module.
-- Add a device data configuration containing id, name, label, tile size, and model renderer.
+- Add a serializable device data configuration containing id, name, accessible label, `tileVariant`, and a `modelType` identifier. Keep the `modelType` → React component registry inside the client-side `DeviceGrid` module; do not put React component references in the data object.
 - Preserve the current GSAP hover caption behavior, changing its content to the device name.
 - Support a subtle automatic presentation motion on pointer-capable desktop devices and stop/reduce motion for touch or reduced-motion users.
 - Keep pointer dragging for gentle model inspection within each tile, with bounded zoom/rotation behavior so the page remains usable.
@@ -41,19 +42,27 @@ The page remains editorial and monochrome: white canvas, black/dark graphite dev
 
 ### Homepage composition
 
-`app/page.tsx` will render `GalleryShell` with `DeviceGrid` instead of `PhotoGrid`. `DeviceGrid` owns four tiles and the global hover caption. It does not create detail links.
+`app/page.tsx` will render `GalleryShell` with `DeviceGrid` instead of `PhotoGrid`. `DeviceGrid` owns four tiles and per-tile model emphasis state. It does not create detail links or render the old filter UI. The existing `SourceMotion` remains the single owner of the global caption animation.
 
 ### Components
 
-- `components/device-grid.tsx`: maps the four configured devices into the existing `.g-grid`/`.g-item` layout, owns hover state and source-style caption animation hooks.
+- `components/device-grid.tsx`: maps the four configured devices into the existing `.g-grid`/`.g-item` layout, owns model emphasis state, assigns `data-title`/`data-category-label` equivalents for the caption, and renders no links.
 - `components/device-canvas.tsx`: client-only R3F scene wrapper, camera, lights, orbit interaction, presentation motion, accessibility label, and WebGL-safe fallback.
 - `components/devices/macbook-pro.tsx`: composed laptop geometry and screen content.
 - `components/devices/keyboard.tsx`: composed base and keycap geometry.
 - `components/devices/mouse.tsx`: composed shell, wheel, and button seam.
 - `components/devices/phone.tsx`: composed body, glass, camera island, and lens details.
-- `config/devices.ts`: serializable device metadata and stable ordering.
+- `config/devices.ts`: serializable device metadata (`modelType`, not a renderer) and stable ordering.
 
-The model components will receive a small shared model-props interface (for example `compact`, `accent`, and `interactive`) so the canvas can size them consistently without coupling the models to homepage layout.
+The model components will receive only a minimal shared geometry prop, such as `scale?: number`. `DeviceCanvas` owns interaction state, camera behavior, motion policy, and materials that are common to all models. A client-only registry maps `modelType` values to the four model components.
+
+### Dependencies
+
+Add and lock these runtime packages in `package.json`/`package-lock.json`, using React 19-compatible releases selected at implementation time:
+
+- `three` for the WebGL scene and core geometry/materials.
+- `@react-three/fiber` for the React renderer and Canvas.
+- `@react-three/drei` for `RoundedBox`, `OrbitControls`, `ContactShadows`, and supporting helpers.
 
 ## Geometry and visual behavior
 
@@ -83,22 +92,24 @@ The model components will receive a small shared model-props interface (for exam
 
 ## Interaction
 
-- Each tile has a `role="img"`-style accessible label through the canvas wrapper and a visible text label on hover/focus.
-- Pointer enter triggers the existing GSAP caption reveal and a small model emphasis scale.
-- Pointer leave reverses the caption and emphasis.
+- Each non-navigating tile is a focusable element with `role="img"`, `tabIndex={0}`, and `aria-label={name}`. Device names are always visible on coarse/touch pointers and visible on keyboard focus.
+- `DeviceGrid` handles pointer/focus state for model emphasis. `SourceMotion` is updated to target `.g-item-wrap` tile elements rather than anchors and remains the only owner of the global GSAP caption listeners; the two responsibilities must not create duplicate caption effects.
+- Pointer enter/focus triggers the existing GSAP caption reveal and a small model emphasis scale.
+- Pointer leave/blur reverses the caption and emphasis.
 - Pointer drag rotates the model through OrbitControls or an equivalent bounded control.
 - Auto-rotation is intentionally subtle and pauses during direct manipulation.
 - `prefers-reduced-motion: reduce` disables auto-rotation and nonessential emphasis tweens.
-- Coarse pointers use a static camera presentation and normal page scrolling; they do not require drag gestures.
+- Coarse pointers use a static camera presentation, keep the name visible, and use `touch-action: pan-y` so normal page scrolling wins over model inspection.
 - No tile click navigation is introduced.
 
 ## Performance and resilience
 
 - Load R3F/Three code only in the client component boundary.
-- Use a low device-pixel-ratio cap for canvases to avoid four full-resolution WebGL surfaces.
+- Render no more than four WebGL contexts. Cap desktop DPR at `1.5` and coarse-pointer DPR at `1.25`.
 - Keep geometry procedural and shared where practical; avoid per-frame allocations.
-- Use one short render loop per visible canvas and pause/stop motion when the tile is off-screen if this can be done without breaking interaction.
-- Provide a non-WebGL fallback tile with the device name and a neutral dark silhouette/gradient so the homepage is still usable if WebGL is unavailable.
+- Use `frameloop="always"` only for visible desktop tiles with auto-rotation. Use `frameloop="demand"` for reduced-motion/coarse-pointer tiles and invalidate only during direct interaction. An `IntersectionObserver` must pause auto-rotation and switch off continuous rendering when a tile leaves the viewport, then resume when it re-enters.
+- Limit the keyboard to a bounded keycap count (no more than 80 keycaps per scene), use low-resolution contact shadows, and keep one directional light plus ambient lighting per scene.
+- Wrap each Canvas in a WebGL capability check and React error boundary. If WebGL is unavailable or a scene errors, render a neutral dark silhouette/gradient with the same visible device name and accessible label.
 
 ## Responsive behavior
 
@@ -113,10 +124,13 @@ The model components will receive a small shared model-props interface (for exam
 3. Browser verification confirms:
    - exactly four homepage device tiles;
    - no homepage tile has a project `href`;
-   - all four canvases render without console/runtime errors;
+   - the filter sidebar is absent on the homepage;
+   - when WebGL is available, all four canvases render without console/runtime errors;
+   - when WebGL is unavailable/simulated unavailable, each tile shows its accessible fallback name instead of crashing;
    - hover/focus reveals the correct device names;
    - pointer rotation works on at least the MacBook tile;
-   - mobile/reduced-motion behavior does not force an animation loop.
+   - mobile/reduced-motion behavior uses demand rendering and does not force an animation loop;
+   - off-screen tiles pause and resume rendering through the visibility observer.
 4. `git diff --check` passes.
 
 ## Known fidelity boundary
