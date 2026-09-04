@@ -14,14 +14,17 @@ export const siteConfig = {
     "Portfolio",
   ],
   author: "Jet Kwok",
-  role: "Computer Vision Engineer · MLOps",
+  role: "Computer Vision Engineer, MLOps",
   location: "Zhengzhou, China",
   affiliation: "iFLYTEK",
+  heroSummary:
+    "Zhengzhou, China · iFLYTEK · M.Eng. in Electronic and Communication Engineering",
   links: {
     github: "https://github.com/FMVPJet",
     linkedin: "https://www.linkedin.com/in/guojiangtao/",
     instagram: "https://www.instagram.com/jetkwok_/",
     scholar: "https://scholar.google.com/citations?user=87stumIAAAAJ&hl=en",
     email: "mailto:JetKwok827@gmail.com",
+    resume: "/assets/resume/resume.pdf",
   },
 };

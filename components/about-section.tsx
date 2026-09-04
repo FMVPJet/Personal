@@ -1,50 +1,81 @@
+"use client";
+
 import Image from "next/image";
+import type { RefObject } from "react";
 
 import { siteConfig } from "@/config/site";
 
-export default function AboutSection() {
+interface AboutSectionProps {
+  devicesButtonRef: RefObject<HTMLButtonElement | null>;
+  isDevicesActive: boolean;
+  isHidden: boolean;
+  onDevicesClick: () => void;
+}
+
+export default function AboutSection({
+  devicesButtonRef,
+  isDevicesActive,
+  isHidden,
+  onDevicesClick,
+}: AboutSectionProps) {
   return (
-    <section aria-labelledby="who-i-am-title" className="g-about-long-page" id="about">
+    <section
+      aria-hidden={isHidden}
+      aria-labelledby="profile-name"
+      className="g-about-long-page"
+      id="about"
+      inert={isHidden}
+    >
       <div className="g-about-content" id="main-content">
         <section className="g-about-row g-about-bio">
+          <div className="g-about-bio-copy has-animation" data-delay="150">
+            <p className="g-about-greeting">Hi, I&apos;m</p>
+            <h1 id="profile-name">
+              {siteConfig.name}
+              <span aria-hidden="true" className="g-about-name-emoji">
+                👋
+              </span>
+            </h1>
+            <p className="g-about-role">{siteConfig.role}</p>
+            <p className="g-about-summary">{siteConfig.heroSummary}</p>
+            <p className="g-about-links">
+              <a
+                className="g-about-button g-about-button-primary"
+                href={siteConfig.links.resume}
+                rel="noreferrer"
+                target="_blank"
+              >
+                View CV
+              </a>
+              <a
+                className="g-about-button"
+                href={siteConfig.links.github}
+                rel="noreferrer"
+                target="_blank"
+              >
+                GitHub
+              </a>
+              <button
+                ref={devicesButtonRef}
+                aria-pressed={isDevicesActive}
+                className="g-about-button"
+                type="button"
+                onClick={onDevicesClick}
+              >
+                Devices
+              </button>
+              <a className="g-about-button" href={siteConfig.links.email}>
+                Email
+              </a>
+            </p>
+          </div>
           <div className="g-about-photo has-animation" data-delay="100">
             <Image
-              alt={`${siteConfig.name} profile photo`}
+              alt={`${siteConfig.name} avatar`}
               height={1080}
               src="/assets/images/profile/me.jpg"
               width={1080}
             />
-          </div>
-          <div className="g-about-bio-copy has-animation" data-delay="150">
-            <h2 id="who-i-am-title">Who I am</h2>
-            <p>
-              I&apos;m {siteConfig.name} — based in <strong>{siteConfig.location}</strong>. I am an
-              engineer with a strong background in AI and ML, with a strong foundation in deep
-              learning.
-            </p>
-            <p>
-              I am proficient in Python, PyTorch, OpenCV, C++, and MATLAB. Alongside developing
-              AI models, I work with model deployment, project operation and maintenance, and AI
-              development and operations.
-            </p>
-            <p>
-              <strong>Currently:</strong> {siteConfig.role} at {siteConfig.affiliation}, focused
-              on image segmentation and object detection.
-            </p>
-            <hr />
-            <p className="g-about-links">
-              <a className="g-link" href={siteConfig.links.email}>
-                Email
-              </a>
-              <span>·</span>
-              <a className="g-link" href={siteConfig.links.linkedin} rel="noopener" target="_blank">
-                LinkedIn
-              </a>
-              <span>·</span>
-              <a className="g-link" href={siteConfig.links.github} rel="noopener" target="_blank">
-                GitHub
-              </a>
-            </p>
           </div>
         </section>
       </div>
