@@ -10,8 +10,8 @@ import SourceMotion from "./source-motion";
 import { siteConfig } from "@/config/site";
 
 const navLinks = [
-  { href: "/", label: "Portfolio" },
-  { href: "/about", label: "About" },
+  { href: "/", label: "Device" },
+  { href: "/about", label: "Portfolio" },
   { href: "/blog", label: "Blog" },
 ];
 

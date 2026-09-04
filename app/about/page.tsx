@@ -6,16 +6,16 @@ import GalleryShell from "@/components/gallery-shell";
 import { pageConfig, siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "Portfolio",
   description: `${siteConfig.name} — ${siteConfig.role} and background in AI and ML.`,
 };
 
 export default function AboutPage() {
   return (
     <GalleryShell>
-      <div className="g-page-action-left" data-tooltip="Back to Works">
+      <div className="g-page-action-left" data-tooltip="Back to Devices">
         <div className="g-page-action-wrap parallax-wrap">
-          <Link aria-label="Back to portfolio" className="g-about-back parallax-element" href="/">
+          <Link aria-label="Back to devices" className="g-about-back parallax-element" href="/">
             <span aria-hidden="true" />
             <span aria-hidden="true" />
           </Link>
@@ -26,7 +26,7 @@ export default function AboutPage() {
           <div className="g-about-hero-styles parallax-onscroll" id="hero-styles">
             <div id="hero-caption">
               <div className="inner">
-                <p className="g-page-heading-kicker">{siteConfig.name} / ABOUT</p>
+                <p className="g-page-heading-kicker">{siteConfig.name} / PORTFOLIO</p>
                 <h1 className="hero-title g-page-heading-title">{pageConfig.about.titlePrefix} {siteConfig.name}</h1>
                 <h2 className="hero-subtitle g-page-heading-subtitle">{pageConfig.about.subtitle}</h2>
               </div>
