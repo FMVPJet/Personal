@@ -18,10 +18,10 @@ export const devices: DeviceItem[] = [
     tileVariant: "full",
   },
   {
-    id: "keyboard",
-    modelType: "keyboard",
-    name: "Keychron K8",
-    accessibleLabel: "Keychron K8",
+    id: "phone",
+    modelType: "phone",
+    name: "iPhone 17 Pro",
+    accessibleLabel: "iPhone 17 Pro",
     tileVariant: "half",
   },
   {
@@ -32,10 +32,10 @@ export const devices: DeviceItem[] = [
     tileVariant: "full",
   },
   {
-    id: "phone",
-    modelType: "phone",
-    name: "iPhone 17 Pro",
-    accessibleLabel: "iPhone 17 Pro",
+    id: "keyboard",
+    modelType: "keyboard",
+    name: "Keychron K8",
+    accessibleLabel: "Keychron K8",
     tileVariant: "half",
   },
 ];
