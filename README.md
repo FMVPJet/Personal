@@ -2,7 +2,7 @@
 
 Personal portfolio for Jet Kwok, a Computer Vision Engineer and MLOps engineer based in Zhengzhou, China.
 
-The site combines an editorial portfolio layout with an interactive device archive, real device models, project case studies, and a technical blog.
+The site combines an editorial portfolio layout with an interactive device archive, real device models, and project case studies.
 
 ## Features
 
@@ -10,7 +10,7 @@ The site combines an editorial portfolio layout with an interactive device archi
 - Optimized GLB models with KTX2 and Meshopt support
 - GSAP page entrance, hover, parallax, and scroll-reveal motion
 - PhotoSwipe image lightboxes and project carousels
-- About, Blog, and project detail pages with shared navigation and layout rules
+- About and project detail pages with shared navigation and layout rules
 - Responsive layouts and reduced-motion support
 
 ## Stack

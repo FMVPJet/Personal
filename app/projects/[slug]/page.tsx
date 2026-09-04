@@ -93,7 +93,7 @@ export default async function ProjectPage({
 
         <p className="g-project-back">
           <Link className="g-link link" href="/">
-            ← Back to portfolio
+            ← Back to devices
           </Link>
         </p>
       </main>

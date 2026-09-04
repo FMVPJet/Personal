@@ -9,7 +9,6 @@ import Mouse from "./devices/mouse";
 import Phone from "./devices/phone";
 import type { ProceduralModel } from "./devices/model-types";
 import { devices, type DeviceItem, type DeviceModelType } from "@/config/devices";
-import { pageConfig, siteConfig } from "@/config/site";
 import { getDeviceIdFromObserverTarget } from "@/lib/device-visibility.mjs";
 
 type RenderMode = "always" | "demand" | "fallback";
@@ -62,7 +61,6 @@ const DeviceTile = memo(function DeviceTile({
       <div
         ref={register}
         aria-label={device.accessibleLabel}
-        aria-describedby="device-grid-instruction"
         className="g-item-wrap item-wrap device-tile"
         data-category-label="Device"
         data-device-visible={isVisible ? "true" : "false"}
@@ -138,13 +136,6 @@ export default function DeviceGrid() {
 
   return (
     <div className="g-grid-wrap device-grid-wrap">
-      <section className="device-intro g-page-heading" aria-labelledby="device-intro-title">
-        <p className="device-intro-kicker g-page-heading-kicker">{siteConfig.name} / {pageConfig.home.kicker}</p>
-        <h1 className="g-page-heading-title" id="device-intro-title">{pageConfig.home.title}</h1>
-        <p className="device-intro-description g-page-heading-subtitle" id="device-grid-instruction">
-          {siteConfig.role} · {siteConfig.location}. {pageConfig.home.interactionHint}
-        </p>
-      </section>
       <div className="g-grid title-big device-grid" id="portfolio">
         {devices.map((device) => (
           <DeviceTile

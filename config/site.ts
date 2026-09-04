@@ -12,7 +12,6 @@ export const siteConfig = {
     "MLOps",
     "Deep Learning",
     "Portfolio",
-    "Blog",
   ],
   author: "Jet Kwok",
   role: "Computer Vision Engineer · MLOps",
@@ -26,19 +25,3 @@ export const siteConfig = {
     email: "mailto:JetKwok827@gmail.com",
   },
 };
-
-export const pageConfig = {
-  home: {
-    kicker: "04 DEVICES",
-    title: "Everyday devices",
-    interactionHint: "Hover a card and drag to explore the models.",
-  },
-  about: {
-    titlePrefix: "Hi, I’m",
-    subtitle: "Computer Vision Engineer · MLOps",
-  },
-  blog: {
-    title: "Blog",
-    subtitle: "Thinking & Writing",
-  },
-} as const;
