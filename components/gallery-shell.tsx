@@ -11,7 +11,7 @@ import { siteConfig } from "@/config/site";
 
 const navLinks = [
   { href: "/", label: "Device" },
-  { href: "/about", label: "Portfolio" },
+  { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
 ];
 
