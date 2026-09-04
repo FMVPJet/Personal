@@ -1,13 +1,12 @@
-import "react-grid-layout/css/styles.css";
-import "react-resizable/css/styles.css";
 import "@/styles/globals.css";
+import "@/styles/gallery.css";
+import "photoswipe/style.css";
 
 import type { Metadata, Viewport } from "next";
-import clsx from "clsx";
 
-import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
-import { fontUbuntu, fontOleoScript } from "@/config/fonts";
+import { fontPoppins } from "@/config/fonts";
+import PageTransition from "@/components/page-transition";
 
 export const metadata: Metadata = {
   title: {
@@ -41,10 +40,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -53,21 +49,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning lang="en">
-      <body
-        className={clsx(
-          fontUbuntu.className,
-          "tracking-wide",
-          fontOleoScript.variable,
-        )}
-      >
-        <Providers themeProps={{ attribute: "class" }}>
-          <div className="relative flex flex-col bg-[#f6f2f2] dark:bg-[#0b0f11] overflow-y-auto scrollbar-hide min-h-screen">
-            <main className="container mx-auto max-w-7xl pt-10 pb-[25px] md:pt-16 flex flex-col">
-              {children}
-            </main>
-          </div>
-        </Providers>
+    <html lang="en">
+      <body className={fontPoppins.variable}>
+        <PageTransition>{children}</PageTransition>
       </body>
     </html>
   );

@@ -1,24 +1,44 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Jet Kwok | Computer Vision Engineer, MLOps",
+  name: "Jet Kwok",
   description:
-    "Personal website and portfolio of Jet Kwok - Computer Vision Engineer & MLOps specialist at iFLYTEK. Explore my projects and technical insights on AI and deep learning.",
-  url: "https://jetkwok.me",
+    "Jet Kwok — Computer Vision Engineer and MLOps engineer based in Zhengzhou, China.",
+  url: "https://fmvp-jet-github-io.vercel.app",
   keywords: [
     "Jet Kwok",
+    "Jiangtao Guo",
     "Computer Vision",
     "MLOps",
     "Deep Learning",
-    "AI Engineer",
     "Portfolio",
-    "iFLYTEK",
-    "Zhengzhou",
+    "Blog",
   ],
   author: "Jet Kwok",
+  role: "Computer Vision Engineer · MLOps",
+  location: "Zhengzhou, China",
+  affiliation: "iFLYTEK",
   links: {
     github: "https://github.com/FMVPJet",
-    linkedin: "https://linkedin.com/in/jetkwok",
+    linkedin: "https://www.linkedin.com/in/guojiangtao/",
+    instagram: "https://www.instagram.com/jetkwok_/",
+    scholar: "https://scholar.google.com/citations?user=87stumIAAAAJ&hl=en",
     email: "mailto:JetKwok827@gmail.com",
   },
 };
+
+export const pageConfig = {
+  home: {
+    kicker: "04 DEVICES",
+    title: "Everyday devices",
+    interactionHint: "Hover a card and drag to explore the models.",
+  },
+  about: {
+    titlePrefix: "Hi, I’m",
+    subtitle: "Computer Vision Engineer · MLOps",
+  },
+  blog: {
+    title: "Blog",
+    subtitle: "Thinking & Writing",
+  },
+} as const;

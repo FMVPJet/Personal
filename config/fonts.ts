@@ -1,12 +1,6 @@
-import { Ubuntu, Oleo_Script } from "next/font/google";
-
-export const fontUbuntu = Ubuntu({
-  weight: ["400", "500", "700"],
-  subsets: ["latin"],
-});
-
-export const fontOleoScript = Oleo_Script({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-oleo",
-});
+// Keep font selection deterministic in offline builds. The source site uses
+// Poppins; browsers with it installed get it first, followed by the closest
+// local system fallbacks.
+export const fontPoppins = { variable: "font-poppins" };
+export const fontUbuntu = { className: "font-ubuntu" };
+export const fontOleoScript = { variable: "font-oleo" };

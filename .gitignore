@@ -15,6 +15,13 @@
 /.next/
 /out/
 
+# 3D source assets
+# Keep the original downloads local; commit only the optimized models.
+/public/assets/devices/*.glb
+
+# Codex local working files
+/.superpowers/
+
 # production
 /build
 

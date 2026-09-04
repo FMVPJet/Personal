@@ -1,52 +1,31 @@
 @import "tailwindcss";
-@import "maplibre-gl/dist/maplibre-gl.css";
-@plugin "../hero.ts";
-@source "../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
 
-@custom-variant dark (&:is(.dark *));
-
-@theme {
-  --color-darkBg: #0f1217;
-  --color-knight: #2a2f35;
-  --color-midnight: #1e2228;
-  --color-cardBlue: #8cc9fe;
-  --color-cardGreen: #63ccae;
-  --color-cardPink: #ffbfd1;
-  --color-cardYellow: #ffdf9a;
-
-  --font-family-oleo: var(--font-oleo);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@keyframes fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
-/* react-grid-layout styles */
-.react-grid-item.react-grid-placeholder {
-  background: rgba(128, 128, 128, 0.3);
-  transition-duration: 300ms;
-  border-radius: 1.5rem;
-  z-index: 0;
+body {
+  overflow-x: hidden;
 }
 
-.react-grid-item {
-  transition: transform 400ms ease, width 400ms ease, height 400ms ease;
+/* Used by the /yezai legal pages */
+:root {
+  --page-bg: #fff;
+  --text-primary: #111;
+  --text-secondary: #666;
+  --font-poppins: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-poppins);
 }
 
-.layout-initializing .react-grid-item {
-  transition: none !important;
-}
-
-@media (max-width: 768px) {
-  .layout-initializing {
-    opacity: 0;
-  }
-  .layout-settled {
-    animation: fade 0.3s ease-out;
-  }
-}
-
-.react-grid-item > .react-resizable-handle {
-  display: none;
+body {
+  font-family: var(--font-poppins);
 }

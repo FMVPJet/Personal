@@ -1,29 +1,34 @@
-# Interactive 3D Event Badge
+# Jet Kwok — Personal Portfolio
 
-If you find it useful, give this repository a star⭐ as a sign of thanks
+Personal portfolio for Jet Kwok, a Computer Vision Engineer and MLOps engineer based in Zhengzhou, China.
 
-## Inspiration
+The site combines an editorial portfolio layout with an interactive device archive, real device models, project case studies, and a technical blog.
 
-[Building an interactive 3D event badge with React Three Fiber](https://vercel.com/blog/building-an-interactive-3d-event-badge-with-react-three-fiber)
+## Features
 
-## The Stack
+- Interactive 3D device grid built with React Three Fiber and Drei
+- Optimized GLB models with KTX2 and Meshopt support
+- GSAP page entrance, hover, parallax, and scroll-reveal motion
+- PhotoSwipe image lightboxes and project carousels
+- About, Blog, and project detail pages with shared navigation and layout rules
+- Responsive layouts and reduced-motion support
 
-- Next Js
-- Typescript
-- Blender
-- Three Js
-- React Three Fiber
-- Drei
-- React-three-rapier
-- MeshLine
+## Stack
 
-## Installation
+- Next.js 15
+- React 19 and TypeScript
+- React Three Fiber, Drei, and Three.js
+- GSAP
+- PhotoSwipe
+- Tailwind CSS 4
+
+## Getting started
 
 ```bash
 npm install
 ```
 
-### Run the development server
+Run the development server:
 
 ```bash
 npm run dev
@@ -31,14 +36,25 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Build the project
+Build for production:
 
 ```bash
 npm run build
 ```
 
-### Run the project in production mode
+Run the production build:
 
 ```bash
 npm run start
 ```
+
+## Verification
+
+```bash
+npm run lint
+npm test
+```
+
+## Asset notes
+
+Optimized device models live in `public/assets/devices/optimized/` and are committed to the repository. Original downloaded GLB files should remain local and are ignored by Git.
