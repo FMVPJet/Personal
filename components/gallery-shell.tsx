@@ -1,51 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 import MagicCursor from "./magic-cursor";
 import SourceMotion from "./source-motion";
 import { siteConfig } from "@/config/site";
 
-const navLinks = [
-  { href: "/#about", label: "About", hash: "#about" },
-  { href: "/#devices", label: "Device", hash: "#devices" },
-];
-
 export default function GalleryShell({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [headerHidden, setHeaderHidden] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [wechatOpen, setWechatOpen] = useState(false);
-  const [currentHash, setCurrentHash] = useState("");
-  const pathname = usePathname();
 
   useEffect(() => {
-    const syncHash = () => setCurrentHash(window.location.hash);
-
-    syncHash();
-    window.addEventListener("hashchange", syncHash);
-    return () => window.removeEventListener("hashchange", syncHash);
-  }, [pathname]);
-
-  useEffect(() => {
-    let lastScroll = 0;
-
     const onScroll = () => {
-      const currentScroll = window.scrollY;
-      setShowScrollTop(currentScroll > 300);
-      // Hide header when scrolling down past 80px
-      if (currentScroll > 80 && currentScroll > lastScroll) {
-        setHeaderHidden(true);
-      } else if (currentScroll < lastScroll) {
-        setHeaderHidden(false);
-      }
-      lastScroll = currentScroll;
+      setShowScrollTop(window.scrollY > 300);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -56,29 +28,6 @@ export default function GalleryShell({
   return (
     <div className="gallery-root">
       <MagicCursor />
-      <header className={`g-header${headerHidden ? " scroll-hide" : ""}`}>
-        <nav aria-label="Primary navigation" className="g-top-nav">
-          <ul>
-            {navLinks.map((link) => {
-              const isActive = pathname === "/" &&
-                (currentHash === link.hash || (!currentHash && link.hash === "#about"));
-
-              return (
-                <li key={link.href}>
-                  <Link
-                    aria-current={isActive ? "page" : undefined}
-                    className={`g-top-nav-link${isActive ? " is-active" : ""}`}
-                    href={link.href}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-      </header>
-
       <div id="main" className="g-main">
         {children}
       </div>
