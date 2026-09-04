@@ -1072,6 +1072,13 @@
   overflow: hidden;
 }
 
+.g-devices-section {
+  display: flow-root;
+  width: var(--gallery-content-width);
+  margin: 0 auto;
+  padding: 40px 0 60px;
+}
+
 .g-about-back {
   position: relative;
   display: block;
@@ -1203,7 +1210,7 @@
 }
 
 .g-about-section-heading h4,
-.g-about-bio-copy h4,
+.g-about-bio-copy h2,
 .g-about-card-row > h4 {
   margin: 0;
   color: var(--gallery-fg);

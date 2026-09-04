@@ -10,8 +10,8 @@ import SourceMotion from "./source-motion";
 import { siteConfig } from "@/config/site";
 
 const navLinks = [
-  { href: "/", label: "Device" },
-  { href: "/about", label: "About" },
+  { href: "/#about", label: "About", hash: "#about" },
+  { href: "/#devices", label: "Device", hash: "#devices" },
 ];
 
 export default function GalleryShell({
@@ -22,7 +22,16 @@ export default function GalleryShell({
   const [headerHidden, setHeaderHidden] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [wechatOpen, setWechatOpen] = useState(false);
+  const [currentHash, setCurrentHash] = useState("");
   const pathname = usePathname();
+
+  useEffect(() => {
+    const syncHash = () => setCurrentHash(window.location.hash);
+
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
+  }, [pathname]);
 
   useEffect(() => {
     let lastScroll = 0;
@@ -51,9 +60,8 @@ export default function GalleryShell({
         <nav aria-label="Primary navigation" className="g-top-nav">
           <ul>
             {navLinks.map((link) => {
-              const isActive =
-                pathname === link.href ||
-                (link.href !== "/" && pathname.startsWith(`${link.href}/`));
+              const isActive = pathname === "/" &&
+                (currentHash === link.hash || (!currentHash && link.hash === "#about"));
 
               return (
                 <li key={link.href}>

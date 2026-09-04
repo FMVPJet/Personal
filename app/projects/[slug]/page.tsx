@@ -92,7 +92,7 @@ export default async function ProjectPage({
         </nav>
 
         <p className="g-project-back">
-          <Link className="g-link link" href="/">
+          <Link className="g-link link" href="/#devices">
             ← Back to devices
           </Link>
         </p>
