@@ -1164,8 +1164,10 @@
 }
 
 .g-about-content {
+  box-sizing: border-box;
   width: var(--gallery-content-width);
   margin: 0 auto;
+  padding-top: 60px;
 }
 
 .g-about-row {

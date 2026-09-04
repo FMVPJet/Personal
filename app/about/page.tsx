@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import GalleryShell from "@/components/gallery-shell";
-import { pageConfig, siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -22,18 +22,6 @@ export default function AboutPage() {
         </div>
       </div>
       <main className="g-about-long-page">
-        <section className="g-about-hero g-page-heading" id="hero">
-          <div className="g-about-hero-styles parallax-onscroll" id="hero-styles">
-            <div id="hero-caption">
-              <div className="inner">
-                <p className="g-page-heading-kicker">{siteConfig.name} / ABOUT</p>
-                <h1 className="hero-title g-page-heading-title">{pageConfig.about.titlePrefix} {siteConfig.name}</h1>
-                <h2 className="hero-subtitle g-page-heading-subtitle">{pageConfig.about.subtitle}</h2>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <div className="g-about-content" id="main-content">
           <section className="g-about-row g-about-bio">
             <div className="g-about-photo has-animation" data-delay="100">
