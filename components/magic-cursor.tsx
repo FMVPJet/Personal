@@ -8,7 +8,7 @@ export default function MagicCursor() {
 
   useEffect(() => {
     const coarsePointer = window.matchMedia?.("(pointer: coarse)").matches;
-    if (coarsePointer || "ontouchstart" in window) {
+    if (coarsePointer || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setIsHidden(true);
       return;
     }

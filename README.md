@@ -58,3 +58,16 @@ npm test
 ## Asset notes
 
 Optimized device models live in `public/assets/devices/optimized/` and are committed to the repository. Original downloaded GLB files should remain local and are ignored by Git.
+
+## Preview alongside development
+
+Use a separate build directory when the development server is already running:
+
+```bash
+NEXT_DIST_DIR=.next-preview npm run build
+NEXT_DIST_DIR=.next-preview npm run start -- --port 3001
+```
+
+The homepage loads the 3D renderer only when the device archive is open and a tile
+is visible. Closing the archive releases its canvases. The archive supports a
+scrollable mobile layout, keyboard focus restoration, and reduced motion.

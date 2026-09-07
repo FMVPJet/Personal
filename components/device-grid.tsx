@@ -2,24 +2,17 @@
 
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 
-import DeviceCanvas from "./device-canvas";
-import Keyboard from "./devices/keyboard";
-import MacbookPro from "./devices/macbook-pro";
-import Mouse from "./devices/mouse";
-import Phone from "./devices/phone";
-import type { ProceduralModel } from "./devices/model-types";
-import { devices, type DeviceItem, type DeviceModelType } from "@/config/devices";
+import dynamic from "next/dynamic";
+import { devices, type DeviceItem } from "@/config/devices";
 import { getDeviceAnimationMetadata } from "@/lib/device-transition.mjs";
 import { getDeviceIdFromObserverTarget } from "@/lib/device-visibility.mjs";
 
 type RenderMode = "always" | "demand" | "fallback";
 
-const MODEL_REGISTRY: Record<DeviceModelType, ProceduralModel> = {
-  "macbook-pro": MacbookPro,
-  keyboard: Keyboard,
-  mouse: Mouse,
-  phone: Phone,
-};
+const DeviceRenderer = dynamic(() => import("./device-renderer"), {
+  ssr: false,
+  loading: () => <div className="device-stage-message" role="status">Loading device…</div>,
+});
 
 interface DeviceTileProps {
   device: DeviceItem;
@@ -90,25 +83,28 @@ const DeviceTile = memo(function DeviceTile({
         onMouseLeave={() => onActiveChange(null)}
       >
         <div className="g-item-content item-content device-item-content">
-          <DeviceCanvas
-            isActive={isActive}
-            isVisible={isVisible}
-            modelComponent={MODEL_REGISTRY[device.modelType]}
-            modelType={device.modelType}
-            name={device.name}
-            onRenderModeChange={handleRenderModeChange}
-          />
+          {isVisible && (
+            <DeviceRenderer
+              isActive={isActive && isInteractive}
+              isVisible={isVisible}
+              modelType={device.modelType}
+              name={device.name}
+              onRenderModeChange={handleRenderModeChange}
+            />
+          )}
         </div>
       </div>
+      <p className="device-tile-label" aria-hidden="true">{device.name}</p>
     </div>
   );
 });
 
 interface DeviceGridProps {
   isInteractive?: boolean;
+  isEnabled?: boolean;
 }
 
-export default function DeviceGrid({ isInteractive = false }: DeviceGridProps) {
+export default function DeviceGrid({ isInteractive = false, isEnabled = true }: DeviceGridProps) {
   const tileRefs = useRef(new Map<string, HTMLDivElement>());
   const [activeId, setActiveId] = useState<string | null>(null);
   const [visibleIds, setVisibleIds] = useState<Record<string, boolean>>(() =>
@@ -163,7 +159,7 @@ export default function DeviceGrid({ isInteractive = false }: DeviceGridProps) {
             device={device}
             isActive={activeId === device.id}
             isInteractive={isInteractive}
-            isVisible={visibleIds[device.id] ?? true}
+            isVisible={isEnabled && (visibleIds[device.id] ?? false)}
             index={index}
             registerTile={registerTile}
             renderMode={renderModes[device.id] ?? "fallback"}

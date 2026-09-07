@@ -155,12 +155,13 @@ export default function HomeExperience() {
         aria-hidden={deviceLayerHidden}
         aria-labelledby="device-view-heading"
         className="g-device-view"
+        id="device-view"
         inert={deviceLayerHidden}
       >
         <h2 ref={deviceHeadingRef} className="g-sr-only" id="device-view-heading" tabIndex={-1}>
           Devices
         </h2>
-        <DeviceGrid isInteractive={deviceInteractive} />
+        <DeviceGrid isEnabled={view === "devices"} isInteractive={deviceInteractive} />
       </section>
     </div>
   );

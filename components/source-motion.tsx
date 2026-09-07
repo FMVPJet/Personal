@@ -151,12 +151,12 @@ function bindPortfolioHover(cleanups: Array<() => void>) {
     });
   });
 
-  window.addEventListener("scroll", repositionCaption, { passive: true });
+  window.addEventListener("scroll", repositionCaption, { passive: true, capture: true });
   window.addEventListener("resize", repositionCaption);
 
   cleanups.push(() => {
     cleanupsForItems.forEach((cleanup) => cleanup());
-    window.removeEventListener("scroll", repositionCaption);
+    window.removeEventListener("scroll", repositionCaption, true);
     window.removeEventListener("resize", repositionCaption);
     gsap.killTweensOf(overlay);
     gsap.killTweensOf([...titleNodes, ...categoryNodes]);
@@ -201,7 +201,8 @@ export default function SourceMotion() {
     const cleanups: Array<() => void> = [];
 
     if (isReducedMotion()) {
-      gsap.defaults({ duration: 0 });
+      document.querySelectorAll(".has-animation").forEach((element) => element.classList.add("animate-in"));
+      return;
     }
 
     bindPageEntrance(cleanups);

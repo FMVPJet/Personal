@@ -38,7 +38,7 @@ export default function AboutSection({
             </h1>
             <p className="g-about-role">{siteConfig.role}</p>
             <p className="g-about-summary">{siteConfig.heroSummary}</p>
-            <p className="g-about-links">
+            <nav aria-label="Profile links" className="g-about-links">
               <a
                 className="g-about-button g-about-button-primary"
                 href={siteConfig.links.resume}
@@ -58,6 +58,7 @@ export default function AboutSection({
               <button
                 ref={devicesButtonRef}
                 aria-pressed={isDevicesActive}
+                aria-controls="device-view"
                 className="g-about-button"
                 type="button"
                 onClick={onDevicesClick}
@@ -67,12 +68,14 @@ export default function AboutSection({
               <a className="g-about-button" href={siteConfig.links.email}>
                 Email
               </a>
-            </p>
+            </nav>
           </div>
           <div className="g-about-photo has-animation" data-delay="100">
             <Image
               alt={`${siteConfig.name} avatar`}
               height={1080}
+              priority
+              sizes="(max-width: 479px) 136px, (max-width: 767px) 152px, 264px"
               src="/assets/images/profile/me.jpg"
               width={1080}
             />

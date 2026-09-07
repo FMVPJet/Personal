@@ -17,6 +17,7 @@ export default function GalleryShell({
       setShowScrollTop(window.scrollY > 300);
     };
 
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", onScroll);
@@ -30,13 +31,13 @@ export default function GalleryShell({
       </div>
       <SourceMotion />
 
-      <div className={`g-page-action-right${showScrollTop ? " is-visible" : ""}`}>
+      <div aria-hidden={!showScrollTop} inert={!showScrollTop} className={`g-page-action-right${showScrollTop ? " is-visible" : ""}`}>
         <div className="g-page-action-wrap parallax-wrap">
           <button
             aria-label="Back to top"
             className="g-scroll-top parallax-element"
             type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" })}
           >
             <span className="g-arrow-left" />
             <span className="g-arrow-right" />
