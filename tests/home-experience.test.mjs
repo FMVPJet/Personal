@@ -58,3 +58,7 @@ test("homepage profile fades in progressively during device exit", () => {
   assert.match(stylesSource, /g-profile-return 720ms/);
   assert.match(stylesSource, /220ms both/);
 });
+
+test("homepage profile keeps the avatar close to the bio copy", () => {
+  assert.match(stylesSource, /\.g-about-row\.g-about-bio\s*\{[\s\S]*gap:\s*clamp\(32px, 4vw, 64px\);/);
+});

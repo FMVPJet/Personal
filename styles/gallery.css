@@ -1592,7 +1592,7 @@
 
 .g-about-row.g-about-bio {
   grid-template-columns: minmax(0, 1fr) 264px;
-  gap: clamp(40px, 6vw, 88px);
+  gap: clamp(32px, 4vw, 64px);
   align-items: center;
   padding: 72px 0;
 }
