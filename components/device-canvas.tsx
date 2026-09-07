@@ -113,7 +113,7 @@ function DeviceScene({
 }) {
   const groupRef = useRef<Group>(null);
   const [isInteracting, setIsInteracting] = useState(false);
-  const { invalidate } = useThree();
+  const { gl, invalidate } = useThree();
 
   useFrame(({ clock }, delta) => {
     const group = groupRef.current;
@@ -136,6 +136,16 @@ function DeviceScene({
   useEffect(() => {
     invalidate();
   }, [invalidate, isActive]);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      // OrbitControls sets the canvas to `none` when it connects. Keep
+      // vertical swipes available for the surrounding mobile archive.
+      gl.domElement.style.touchAction = coarsePointer ? "pan-y" : "none";
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [coarsePointer, gl]);
 
   if (forceError) return <DebugSceneError />;
 

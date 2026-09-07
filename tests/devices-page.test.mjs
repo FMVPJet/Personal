@@ -5,6 +5,7 @@ import test from "node:test";
 const homeSource = readFileSync("app/page.tsx", "utf8");
 const aboutSource = readFileSync("components/about-section.tsx", "utf8");
 const experienceSource = readFileSync("components/home-experience.tsx", "utf8");
+const canvasSource = readFileSync("components/device-canvas.tsx", "utf8");
 const galleryShellSource = readFileSync("components/gallery-shell.tsx", "utf8");
 const stylesSource = readFileSync("styles/gallery.css", "utf8");
 
@@ -36,4 +37,10 @@ test("device gestures retain their origin marker through an outside release", ()
   assert.match(experienceSource, /startedOnDevice/);
   assert.match(experienceSource, /if \(clickedInsideDevice \|\| gestureRef\.current\.startedOnDevice\)/);
   assert.match(experienceSource, /gestureRef\.current\.startedOnDevice = false/);
+});
+
+test("mobile device canvases preserve vertical page scrolling", () => {
+  assert.match(canvasSource, /gl\.domElement/);
+  assert.match(canvasSource, /touchAction\s*=\s*coarsePointer\s*\?\s*[\"']pan-y[\"']/);
+  assert.match(stylesSource, /\.g-device-view\s*\{[\s\S]*touch-action:\s*pan-y;/);
 });

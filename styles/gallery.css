@@ -1820,6 +1820,7 @@
   display: grid;
   place-items: center;
   overflow: hidden;
+  touch-action: pan-y;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
