@@ -45,6 +45,10 @@ test("mobile device canvases preserve vertical page scrolling", () => {
   assert.match(stylesSource, /\.g-device-view\s*\{[\s\S]*touch-action:\s*pan-y;/);
 });
 
+test("mobile device swipes do not enter OrbitControls rotation", () => {
+  assert.match(canvasSource, /<OrbitControls[\s\S]*enableRotate=\{!coarsePointer\}/);
+});
+
 test("device view stays visually clean without archive chrome", () => {
   assert.doesNotMatch(experienceSource, /g-device-toolbar|Back to profile|Everyday essentials|g-device-hint/);
   assert.doesNotMatch(stylesSource, /g-device-toolbar|g-device-hint/);

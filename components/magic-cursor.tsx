@@ -22,6 +22,7 @@ export default function MagicCursor() {
     let currentX = 0;
     let currentY = 0;
     let enlarged = false;
+    let animationFrame: number | null = null;
     const cleanups: Array<() => void> = [];
 
     gsap.set(ball, {
@@ -34,22 +35,38 @@ export default function MagicCursor() {
     });
     gsap.set(loader, { scale: 1, borderWidth: "2px", top: 0, left: 0 });
 
+    const animateCursor = () => {
+      const deltaX = targetX - currentX;
+      const deltaY = targetY - currentY;
+      if (Math.abs(deltaX) < 0.1 && Math.abs(deltaY) < 0.1) {
+        currentX = targetX;
+        currentY = targetY;
+        gsap.set(ball, { x: currentX, y: currentY });
+        animationFrame = null;
+        return;
+      }
+
+      currentX += deltaX * 0.25;
+      currentY += deltaY * 0.25;
+      gsap.set(ball, { x: currentX, y: currentY });
+      animationFrame = window.requestAnimationFrame(animateCursor);
+    };
     const onMove = (event: MouseEvent) => {
       targetX = event.clientX;
       targetY = event.clientY;
       gsap.to(ball, { duration: 0.15, opacity: 1, overwrite: "auto" });
-    };
-    const tick = () => {
-      currentX += (targetX - currentX) * 0.25;
-      currentY += (targetY - currentY) * 0.25;
-      gsap.set(ball, { x: currentX, y: currentY });
+      if (animationFrame === null) {
+        animationFrame = window.requestAnimationFrame(animateCursor);
+      }
     };
 
     document.addEventListener("mousemove", onMove);
-    gsap.ticker.add(tick);
     cleanups.push(() => {
       document.removeEventListener("mousemove", onMove);
-      gsap.ticker.remove(tick);
+      if (animationFrame !== null) {
+        window.cancelAnimationFrame(animationFrame);
+        animationFrame = null;
+      }
     });
 
     const setEnlarged = (next: boolean) => {

@@ -168,6 +168,9 @@ function DeviceScene({
       />
       <OrbitControls
         makeDefault
+        // OrbitControls treats every mobile one-finger gesture as rotation,
+        // which steals vertical swipes from the surrounding device archive.
+        enableRotate={!coarsePointer}
         enablePan={false}
         enableZoom={false}
         minPolarAngle={1.05}
@@ -310,7 +313,7 @@ export default function DeviceCanvas({
           dpr={coarsePointer ? [1, 1.15] : [1, 1.25]}
           frameloop={isContinuous ? "always" : "demand"}
           camera={{ position: camera.position, fov: camera.fov, near: 0.1, far: 100 }}
-          gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+          gl={{ antialias: !coarsePointer, alpha: true, powerPreference: "high-performance" }}
         >
           <Suspense fallback={<SceneLoading />}>
             <DeviceScene
