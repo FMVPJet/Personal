@@ -6,6 +6,7 @@ const homeSource = readFileSync("app/page.tsx", "utf8");
 const aboutSource = readFileSync("components/about-section.tsx", "utf8");
 const experienceSource = readFileSync("components/home-experience.tsx", "utf8");
 const canvasSource = readFileSync("components/device-canvas.tsx", "utf8");
+const phoneSource = readFileSync("components/devices/phone.tsx", "utf8");
 const galleryShellSource = readFileSync("components/gallery-shell.tsx", "utf8");
 const stylesSource = readFileSync("styles/gallery.css", "utf8");
 
@@ -64,4 +65,8 @@ test("mobile device swipes scroll vertically while preserving model rotation", (
 test("device view stays visually clean without archive chrome", () => {
   assert.doesNotMatch(experienceSource, /g-device-toolbar|Back to profile|Everyday essentials|g-device-hint/);
   assert.doesNotMatch(stylesSource, /g-device-toolbar|g-device-hint/);
+});
+
+test("phone model meets the shared contact shadow plane", () => {
+  assert.match(phoneSource, /position=\{\[0, 0\.55, 0\]\}/);
 });

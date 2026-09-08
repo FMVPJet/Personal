@@ -10,7 +10,7 @@ export default function Phone({ scale = 1 }: ProceduralModelProps) {
     <LoadedModel
       path={MODEL_PATH}
       scale={scale * 16}
-      position={[0, 0.1, 0]}
+      position={[0, 0.55, 0]}
       rotation={[0.04, -0.12, -0.06]}
     />
   );
