@@ -226,6 +226,14 @@
   height: 100% !important;
 }
 
+@media (pointer: coarse) {
+  /* Let vertical swipes reach the device archive while horizontal drags
+     remain available to OrbitControls for model rotation. */
+  .device-model-stage canvas {
+    touch-action: pan-y !important;
+  }
+}
+
 .device-fallback {
   position: absolute;
   inset: 8%;

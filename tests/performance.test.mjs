@@ -14,3 +14,7 @@ test("magic cursor only schedules animation frames while the pointer moves", () 
 test("coarse pointer device canvases avoid antialiasing work", () => {
   assert.match(canvasSource, /antialias:\s*!coarsePointer/);
 });
+
+test("coarse pointer device canvases use a sharper bounded pixel ratio", () => {
+  assert.match(canvasSource, /dpr=\{coarsePointer \? \[1, 1\.75\] : \[1, 1\.25\]\}/);
+});

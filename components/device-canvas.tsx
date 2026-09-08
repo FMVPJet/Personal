@@ -100,20 +100,18 @@ function DeviceScene({
   modelComponent: Model,
   isActive,
   isContinuous,
-  coarsePointer,
   forceError,
   target,
 }: {
   modelComponent: ProceduralModel;
   isActive: boolean;
   isContinuous: boolean;
-  coarsePointer: boolean;
   forceError: boolean;
   target: [number, number, number];
 }) {
   const groupRef = useRef<Group>(null);
   const [isInteracting, setIsInteracting] = useState(false);
-  const { gl, invalidate } = useThree();
+  const { invalidate } = useThree();
 
   useFrame(({ clock }, delta) => {
     const group = groupRef.current;
@@ -137,16 +135,6 @@ function DeviceScene({
     invalidate();
   }, [invalidate, isActive]);
 
-  useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      // OrbitControls sets the canvas to `none` when it connects. Keep
-      // vertical swipes available for the surrounding mobile archive.
-      gl.domElement.style.touchAction = coarsePointer ? "pan-y" : "none";
-    });
-
-    return () => window.cancelAnimationFrame(frame);
-  }, [coarsePointer, gl]);
-
   if (forceError) return <DebugSceneError />;
 
   return (
@@ -168,9 +156,6 @@ function DeviceScene({
       />
       <OrbitControls
         makeDefault
-        // OrbitControls treats every mobile one-finger gesture as rotation,
-        // which steals vertical swipes from the surrounding device archive.
-        enableRotate={!coarsePointer}
         enablePan={false}
         enableZoom={false}
         minPolarAngle={1.05}
@@ -310,7 +295,7 @@ export default function DeviceCanvas({
         data-render-mode={renderMode}
       >
         <Canvas
-          dpr={coarsePointer ? [1, 1.15] : [1, 1.25]}
+          dpr={coarsePointer ? [1, 1.75] : [1, 1.25]}
           frameloop={isContinuous ? "always" : "demand"}
           camera={{ position: camera.position, fov: camera.fov, near: 0.1, far: 100 }}
           gl={{ antialias: !coarsePointer, alpha: true, powerPreference: "high-performance" }}
@@ -320,7 +305,6 @@ export default function DeviceCanvas({
               modelComponent={modelComponent}
               isActive={isActive}
               isContinuous={isContinuous}
-              coarsePointer={coarsePointer}
               forceError={forceError}
               target={camera.target}
             />
