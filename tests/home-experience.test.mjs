@@ -29,7 +29,7 @@ test("home experience coordinates view state, accessibility, and focus", () => {
   assert.match(experienceSource, /aria-hidden/);
   assert.match(experienceSource, /onPointerDownCapture/);
   assert.match(experienceSource, /onPointerCancelCapture/);
-  assert.match(experienceSource, /closest\(["']\.device-item["']\)/);
+  assert.match(experienceSource, /closest\(["']\.device-model-hit-area["']\)/);
   assert.match(experienceSource, /gestureRef/);
 });
 

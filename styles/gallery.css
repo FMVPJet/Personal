@@ -160,6 +160,7 @@
   position: absolute;
   inset: -18% -22%;
   overflow: visible;
+  pointer-events: none;
   /* Let the transparent canvas breathe outside the grid cell. Paint containment
      would clip the model back into the old rectangular frame. */
   contain: none;
@@ -224,12 +225,41 @@
   display: block;
   width: 100% !important;
   height: 100% !important;
+  pointer-events: none;
+}
+
+.device-model-hit-area {
+  position: absolute;
+  z-index: 2;
+  inset: 28% 24%;
+  pointer-events: auto;
+  touch-action: none;
+  cursor: grab;
+}
+
+.device-model-hit-area:active {
+  cursor: grabbing;
+}
+
+.device-model-hit-area-macbook-pro {
+  inset: 30% 20%;
+}
+
+.device-model-hit-area-keyboard {
+  inset: 34% 18%;
+}
+
+.device-model-hit-area-mouse {
+  inset: 27% 29%;
+}
+
+.device-model-hit-area-phone {
+  inset: 12% 27%;
 }
 
 @media (pointer: coarse) {
-  /* Let vertical swipes reach the device archive while horizontal drags
-     remain available to OrbitControls for model rotation. */
-  .device-model-stage canvas {
+  /* Only the model hit area can claim a horizontal drag. */
+  .device-model-hit-area {
     touch-action: pan-y !important;
   }
 }

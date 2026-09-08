@@ -5,6 +5,7 @@ import {
   Suspense,
   type ErrorInfo,
   type ReactNode,
+  useCallback,
   useEffect,
   useState,
   useRef,
@@ -100,12 +101,14 @@ function DeviceScene({
   modelComponent: Model,
   isActive,
   isContinuous,
+  interactionElement,
   forceError,
   target,
 }: {
   modelComponent: ProceduralModel;
   isActive: boolean;
   isContinuous: boolean;
+  interactionElement: HTMLDivElement;
   forceError: boolean;
   target: [number, number, number];
 }) {
@@ -156,6 +159,7 @@ function DeviceScene({
       />
       <OrbitControls
         makeDefault
+        domElement={interactionElement}
         enablePan={false}
         enableZoom={false}
         minPolarAngle={1.05}
@@ -181,6 +185,10 @@ export default function DeviceCanvas({
   const [reducedMotion, setReducedMotion] = useState(false);
   const [coarsePointer, setCoarsePointer] = useState(false);
   const [forceError, setForceError] = useState(false);
+  const [interactionElement, setInteractionElement] = useState<HTMLDivElement | null>(null);
+  const registerInteractionElement = useCallback((node: HTMLDivElement | null) => {
+    setInteractionElement(node);
+  }, []);
 
   const cameraPresets: Record<
     DeviceModelType,
@@ -300,16 +308,24 @@ export default function DeviceCanvas({
           camera={{ position: camera.position, fov: camera.fov, near: 0.1, far: 100 }}
           gl={{ antialias: !coarsePointer, alpha: true, powerPreference: "high-performance" }}
         >
-          <Suspense fallback={<SceneLoading />}>
-            <DeviceScene
-              modelComponent={modelComponent}
-              isActive={isActive}
-              isContinuous={isContinuous}
-              forceError={forceError}
-              target={camera.target}
-            />
-          </Suspense>
+          {interactionElement && (
+            <Suspense fallback={<SceneLoading />}>
+              <DeviceScene
+                modelComponent={modelComponent}
+                isActive={isActive}
+                isContinuous={isContinuous}
+                interactionElement={interactionElement}
+                forceError={forceError}
+                target={camera.target}
+              />
+            </Suspense>
+          )}
         </Canvas>
+        <div
+          ref={registerInteractionElement}
+          aria-hidden="true"
+          className={`device-model-hit-area device-model-hit-area-${modelType}`}
+        />
       </div>
     </SceneErrorBoundary>
   );

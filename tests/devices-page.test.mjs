@@ -27,7 +27,7 @@ test("homepage exits from blank space while protecting device gestures", () => {
   assert.match(experienceSource, /onClick=\{handleBlankClick\}/);
   assert.match(experienceSource, /onPointerDownCapture=\{handlePointerDownCapture\}/);
   assert.match(experienceSource, /onPointerCancelCapture=\{handlePointerCancelCapture\}/);
-  assert.match(experienceSource, /closest\("\.device-item"\)/);
+  assert.match(experienceSource, /closest\("\.device-model-hit-area"\)/);
   assert.match(experienceSource, /exitDevices\(\)/);
   assert.doesNotMatch(experienceSource, /router\.push|g-devices-back|Back home/);
   assert.doesNotMatch(stylesSource, /\.g-devices-back|\.g-devices-page/);
@@ -39,11 +39,17 @@ test("device gestures retain their origin marker through an outside release", ()
   assert.match(experienceSource, /gestureRef\.current\.startedOnDevice = false/);
 });
 
+test("only the model hit area owns device rotation gestures", () => {
+  assert.match(canvasSource, /device-model-hit-area/);
+  assert.match(canvasSource, /domElement=\{interactionElement\}/);
+  assert.match(stylesSource, /\.device-model-hit-area[\s\S]*pointer-events:\s*auto;/);
+});
+
 test("mobile device canvases preserve vertical page scrolling", () => {
   assert.match(stylesSource, /\.g-device-view\s*\{[\s\S]*touch-action:\s*pan-y;/);
   assert.match(
     stylesSource,
-    /\.device-model-stage canvas\s*\{[\s\S]*touch-action:\s*pan-y\s*!important;/,
+    /\.device-model-hit-area\s*\{[\s\S]*touch-action:\s*pan-y\s*!important;/,
   );
 });
 
@@ -51,7 +57,7 @@ test("mobile device swipes scroll vertically while preserving model rotation", (
   assert.doesNotMatch(canvasSource, /enableRotate=\{!coarsePointer\}/);
   assert.match(
     stylesSource,
-    /@media\s*\(pointer:\s*coarse\)[\s\S]*\.device-model-stage canvas\s*\{[\s\S]*touch-action:\s*pan-y\s*!important;/,
+    /@media\s*\(pointer:\s*coarse\)[\s\S]*\.device-model-hit-area\s*\{[\s\S]*touch-action:\s*pan-y\s*!important;/,
   );
 });
 

@@ -110,7 +110,7 @@ export default function HomeExperience() {
 
   const handlePointerDownCapture = (event: React.PointerEvent<HTMLElement>) => {
     gestureRef.current.startedOnDevice =
-      event.target instanceof Element && Boolean(event.target.closest(".device-item"));
+      event.target instanceof Element && Boolean(event.target.closest(".device-model-hit-area"));
   };
 
   const handlePointerCancelCapture = () => {
@@ -121,7 +121,7 @@ export default function HomeExperience() {
     if (view !== "devices" || isExiting) return;
 
     const clickedInsideDevice =
-      event.target instanceof Element && Boolean(event.target.closest(".device-item"));
+      event.target instanceof Element && Boolean(event.target.closest(".device-model-hit-area"));
     if (clickedInsideDevice || gestureRef.current.startedOnDevice) {
       gestureRef.current.startedOnDevice = false;
       return;
